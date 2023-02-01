@@ -41,10 +41,30 @@ public class Day1Test {
 
     @Test
     @DisplayName("Should be able to digest the input file and return the maximum calories carried by a single elf")
-    public void day1() {
+    public void day1_part1() {
         Day1 day1 = new Day1();
         day1.readAndParseFile(PATH_TO_INPUT);
         System.out.println(day1.getMaxCalories());
+    }
+
+    @Test
+    @DisplayName("Should retrieve the list of total carried calories per elf and return the three biggest values")
+    public void getTopThreeSumCalories() {
+        Day1 day1 = new Day1();
+        List<Integer> fakeListOfCaloriesPerElf = asList(1000, 2000, 4000, 6000, 3000, 8000, 7000);
+        Integer expectedMaxCalories = 8000 + 7000 + 6000;
+        day1.setListOfCaloriesPerElf(fakeListOfCaloriesPerElf);
+
+        assertEquals(expectedMaxCalories, day1.getTopThreeSumCalories());
+    }
+
+    @Test
+    @DisplayName("Should be able to digest the input file and return the sum of calories carried by "
+            + "the three elves carrying the most calories")
+    public void day1_part2() {
+        Day1 day1 = new Day1();
+        day1.readAndParseFile(PATH_TO_INPUT);
+        System.out.println(day1.getTopThreeSumCalories());
     }
 
 }

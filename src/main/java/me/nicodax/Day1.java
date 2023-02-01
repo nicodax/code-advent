@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -32,6 +33,17 @@ public class Day1 {
 
     public Integer getMaxCalories() {
         return listOfCaloriesPerElf.stream().mapToInt(v -> v).max().orElse(0);
+    }
+
+    public Integer getTopThreeSumCalories() {
+        List<Integer> workingList = new ArrayList<>(listOfCaloriesPerElf);
+        Integer top1 = workingList.stream().mapToInt(v -> v).max().orElse(0);
+        workingList.remove(top1);
+        Integer top2 = workingList.stream().mapToInt(v -> v).max().orElse(0);
+        workingList.remove(top2);
+        Integer top3 = workingList.stream().mapToInt(v -> v).max().orElse(0);
+        workingList.remove(top3);
+        return top1 + top2 + top3;
     }
 
     public void setListOfCaloriesPerElf(List<Integer> listOfCaloriesPerElf) {
