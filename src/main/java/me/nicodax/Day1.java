@@ -4,16 +4,16 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
 import static java.lang.Integer.parseInt;
 
 public class Day1 {
-    List<Integer> listOfCaloriesPerElf = new ArrayList<>();
+    private List<Integer> listOfCaloriesPerElf = new ArrayList<>();
 
     public void readAndParseFile(Path path) {
+        listOfCaloriesPerElf = new ArrayList<>();
         try (Stream<String> lines = Files.lines(path)){
             int currentCalories = 0;
             for (String line : lines.toList()) {

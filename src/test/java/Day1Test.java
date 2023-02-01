@@ -1,21 +1,19 @@
 import me.nicodax.Day1;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.List;
 
 import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class Day1Test {
-    private final Path PATH_TO_INPUT = Paths.get("C:\\Users\\Nicolas Daxhelet\\Documents\\code-advent"
+    private final Path PATH_TO_INPUT = Paths.get(System.getProperty("user.dir")
                                                          + "\\src\\main\\resources\\input-day1.txt");
-    private final Path PATH_TO_TEST_INPUT = Paths.get("C:\\Users\\Nicolas Daxhelet\\Documents\\code-advent"
+    private final Path PATH_TO_TEST_INPUT = Paths.get(System.getProperty("user.dir")
                                                          + "\\src\\main\\resources\\test-input-day1.txt");
 
     @Test
@@ -39,12 +37,12 @@ public class Day1Test {
         assertEquals(expectedListOfCaloriesPerElf, day1.getListOfCaloriesPerElf());
     }
 
+    @Disabled("PART 1 SOLUTION")
     @Test
-    @DisplayName("Should be able to digest the input file and return the maximum calories carried by a single elf")
     public void day1_part1() {
         Day1 day1 = new Day1();
         day1.readAndParseFile(PATH_TO_INPUT);
-        System.out.println(day1.getMaxCalories());
+        System.out.println("PART 1 SOLUTION: " + day1.getMaxCalories());
     }
 
     @Test
@@ -58,13 +56,12 @@ public class Day1Test {
         assertEquals(expectedMaxCalories, day1.getTopThreeSumCalories());
     }
 
+    @Disabled("PART 2 SOLUTION")
     @Test
-    @DisplayName("Should be able to digest the input file and return the sum of calories carried by "
-            + "the three elves carrying the most calories")
     public void day1_part2() {
         Day1 day1 = new Day1();
         day1.readAndParseFile(PATH_TO_INPUT);
-        System.out.println(day1.getTopThreeSumCalories());
+        System.out.println("PART 2 SOLUTION: " + day1.getTopThreeSumCalories());
     }
 
 }
