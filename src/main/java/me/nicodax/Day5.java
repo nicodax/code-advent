@@ -17,7 +17,7 @@ public class Day5 {
     private final Integer CHAR_POSITION_WITHIN_STACK = 1;
     private HashMap<Integer, List<Character>> crateStacks = new HashMap<>();
 
-    public void readAndParseFile(Path path) {
+    public void readAndParseFile(Path path, Integer part) {
         crateStacks = new HashMap<>();
         try (Stream<String> linesStream = Files.lines(path)){
             List<String> lines = linesStream.toList();
@@ -31,7 +31,7 @@ public class Day5 {
                     }
                     parsingActions = true;
                 } else if (parsingActions) {
-                    parseAndExecuteCargoCraneAction(line);
+                    parseAndExecuteCargoCraneAction(line, part);
                 }
             }
         } catch (IOException e) {
@@ -52,17 +52,30 @@ public class Day5 {
         }
     }
 
-    public void parseAndExecuteCargoCraneAction(String line) {
+    public void parseAndExecuteCargoCraneAction(String line, Integer part) {
         String[] args = line.trim().split(" ");
         Integer fromCraneStackIndex = parseInt(args[3]);
         Integer toCraneStackIndex = parseInt(args[5]);
         int numberOfCratesToMove = parseInt(args[1]);
+        List<Character> cratesOnCrane = new ArrayList<>();
         for (int i = 0; i < numberOfCratesToMove; i++) {
             List<Character> fromCrateStack = crateStacks.get(fromCraneStackIndex);
-            List<Character> toCrateStack = crateStacks.get(toCraneStackIndex);
             Character movingCrate = fromCrateStack.remove(fromCrateStack.size() - 1);
-            toCrateStack.add(movingCrate);
+            if (part == 2) {
+                cratesOnCrane.add(movingCrate);
+            } else {
+                List<Character> toCrateStack = crateStacks.get(toCraneStackIndex);
+                toCrateStack.add(movingCrate);
+                crateStacks.put(toCraneStackIndex, toCrateStack);
+            }
             crateStacks.put(fromCraneStackIndex, fromCrateStack);
+        }
+        if (cratesOnCrane.isEmpty()) return;
+        Integer cratesOnCraneInitialSize = cratesOnCrane.size();
+        for (int i = 0; i < cratesOnCraneInitialSize; i++) {
+            List<Character> toCrateStack = crateStacks.get(toCraneStackIndex);
+            Character movingCrate = cratesOnCrane.remove(cratesOnCrane.size() - 1);
+            toCrateStack.add(movingCrate);
             crateStacks.put(toCraneStackIndex, toCrateStack);
         }
     }
