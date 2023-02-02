@@ -58,7 +58,7 @@ public class Day4Test {
 
     @Disabled("PART 1 SOLUTION")
     @Test
-    public void day3_part1() {
+    public void day4_part1() {
         Day4 day4 = new Day4();
         day4.readAndParseFile(PATH_TO_INPUT);
         System.out.println("PART 1 SOLUTION: " + day4.getFullyOverlappedCount());
@@ -105,7 +105,7 @@ public class Day4Test {
 
     @Disabled("PART 2 SOLUTION")
     @Test
-    public void day3_part2() {
+    public void day4_part2() {
         Day4 day4 = new Day4();
         day4.readAndParseFile(PATH_TO_INPUT);
         System.out.println("PART 2 SOLUTION: " + day4.getOverlappedCount());
