@@ -1,4 +1,4 @@
-package me.nicodax;
+package me.nicodax.day5;
 
 import java.io.IOException;
 import java.nio.file.Files;

@@ -1,4 +1,5 @@
-import me.nicodax.Day3;
+package me.nicodax.day3;
+
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -80,7 +81,7 @@ public class Day3Test {
         assertEquals(expectedMisplacedItemPriorityList, day3.getMisplacedItemPriorityList());
     }
 
-    @Disabled("PART 1 SOLUTION")
+    @Disabled
     @Test
     public void day3_part1() {
         Day3 day3 = new Day3();
@@ -109,7 +110,7 @@ public class Day3Test {
         assertEquals(expectedPrioritySum, day3.getGroupBadgePrioritySum());
     }
 
-    @Disabled("PART 2 SOLUTION")
+    @Disabled
     @Test
     public void day3_part2() {
         Day3 day3 = new Day3();

@@ -1,3 +1,5 @@
+package me.nicodax.day8;
+
 import me.nicodax.day8.Day8;
 import me.nicodax.day8.Tree;
 import org.junit.jupiter.api.Disabled;
@@ -137,7 +139,7 @@ public class Day8Test {
         assertNotNull(day8.getVisibleTrees().get("3-4"));
     }
 
-    @Disabled("PART 1 SOLUTION")
+    @Disabled
     @Test
     public void day8_part1() {
         Day8 day8 = new Day8();
@@ -201,7 +203,7 @@ public class Day8Test {
         assertEquals(8, day8.getHighestScenicScore());
     }
 
-    @Disabled("PART 2 SOLUTION")
+    @Disabled
     @Test
     public void day8_part2() {
         Day8 day8 = new Day8();

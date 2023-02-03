@@ -1,4 +1,4 @@
-package day7;
+package me.nicodax.day7;
 
 import me.nicodax.day7.Day7;
 import me.nicodax.day7.Dir;
@@ -184,7 +184,7 @@ public class Day7Test {
         assertEquals(95437, day7.findTotalSizeForEveryDirectoryWithLessThanMaxSize());
     }
 
-    @Disabled("PART 1 SOLUTION")
+    @Disabled
     @Test
     public void day7_part1() {
         Day7 day7 = new Day7();
@@ -200,7 +200,7 @@ public class Day7Test {
         assertEquals(24933642, day7.findSmallestDirSizeToFreeUpRequiredSpace());
     }
 
-    @Disabled("PART 2 SOLUTION")
+    @Disabled
     @Test
     public void day7_part2() {
         Day7 day7 = new Day7();
