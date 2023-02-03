@@ -1,4 +1,5 @@
-import me.nicodax.Day5;
+package me.nicodax.day5;
+
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -157,7 +158,7 @@ public class Day5Test {
         assertEquals(expectedCrateStacks, day5.getCrateStacks());
     }
 
-    @Disabled("PART 1 SOLUTION")
+    @Disabled
     @Test
     public void day5_part1() {
         Day5 day5 = new Day5();
@@ -228,7 +229,7 @@ public class Day5Test {
         assertEquals(expectedCrateStacks, day5.getCrateStacks());
     }
 
-    @Disabled("PART 2 SOLUTION")
+    @Disabled
     @Test
     public void day5_part2() {
         Day5 day5 = new Day5();

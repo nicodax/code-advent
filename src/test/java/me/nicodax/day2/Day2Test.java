@@ -1,4 +1,5 @@
-import me.nicodax.Day2;
+package me.nicodax.day2;
+
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -8,15 +9,15 @@ import java.nio.file.Paths;
 import java.util.List;
 
 import static java.util.Arrays.asList;
-import static me.nicodax.Day2.CONDITION_DRAW;
-import static me.nicodax.Day2.CONDITION_LOSE;
-import static me.nicodax.Day2.CONDITION_WIN;
-import static me.nicodax.Day2.OPPONENT_PAPER;
-import static me.nicodax.Day2.OPPONENT_ROCK;
-import static me.nicodax.Day2.OPPONENT_SCISSORS;
-import static me.nicodax.Day2.PAPER;
-import static me.nicodax.Day2.ROCK;
-import static me.nicodax.Day2.SCISSORS;
+import static me.nicodax.day2.Day2.CONDITION_DRAW;
+import static me.nicodax.day2.Day2.CONDITION_LOSE;
+import static me.nicodax.day2.Day2.CONDITION_WIN;
+import static me.nicodax.day2.Day2.OPPONENT_PAPER;
+import static me.nicodax.day2.Day2.OPPONENT_ROCK;
+import static me.nicodax.day2.Day2.OPPONENT_SCISSORS;
+import static me.nicodax.day2.Day2.PAPER;
+import static me.nicodax.day2.Day2.ROCK;
+import static me.nicodax.day2.Day2.SCISSORS;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Day2Test {
@@ -81,7 +82,7 @@ public class Day2Test {
         assertEquals(expectedTotalScore, day2.getMyTotalScore());
     }
 
-    @Disabled("PART 1 SOLUTION")
+    @Disabled
     @Test
     public void day2_part1() {
         Day2 day2 = new Day2();
@@ -108,7 +109,7 @@ public class Day2Test {
         assertEquals(expectedAction_SCISSORS, day2.getMyActionFromRoundResult(CONDITION_WIN, OPPONENT_PAPER));
     }
 
-    @Disabled("PART 2 SOLUTION")
+    @Disabled
     @Test
     public void day2_part2() {
         Day2 day2 = new Day2();

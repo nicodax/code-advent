@@ -1,4 +1,5 @@
-import me.nicodax.Day6;
+package me.nicodax.day6;
+
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -34,7 +35,7 @@ public class Day6Test {
         assertEquals(expectedFirstMarkerIndex, day6.getFirstMarkerIndex());
     }
 
-    @Disabled("PART 1 SOLUTION")
+    @Disabled
     @Test
     public void day6_part1() {
         Day6 day6 = new Day6(PART_1_MARKER_SIZE);
@@ -42,7 +43,7 @@ public class Day6Test {
         System.out.println("PART 1 SOLUTION: " + day6.getFirstMarkerIndex());
     }
 
-    @Disabled("PART 2 SOLUTION")
+    @Disabled
     @Test
     public void day6_part2() {
         Day6 day6 = new Day6(PART_2_MARKER_SIZE);

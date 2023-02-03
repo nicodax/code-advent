@@ -1,4 +1,4 @@
-package day7;
+package me.nicodax.day7;
 
 import me.nicodax.day7.Dir;
 import org.junit.jupiter.api.DisplayName;

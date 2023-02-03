@@ -1,4 +1,5 @@
-import me.nicodax.Day4;
+package me.nicodax.day4;
+
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -56,7 +57,7 @@ public class Day4Test {
         assertEquals(expectedOverlapCount, day4.getFullyOverlappedCount());
     }
 
-    @Disabled("PART 1 SOLUTION")
+    @Disabled
     @Test
     public void day4_part1() {
         Day4 day4 = new Day4();
@@ -103,7 +104,7 @@ public class Day4Test {
         assertEquals(expectedOverlappedCount, day4.getOverlappedCount());
     }
 
-    @Disabled("PART 2 SOLUTION")
+    @Disabled
     @Test
     public void day4_part2() {
         Day4 day4 = new Day4();

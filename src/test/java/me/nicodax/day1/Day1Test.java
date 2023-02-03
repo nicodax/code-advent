@@ -1,4 +1,5 @@
-import me.nicodax.Day1;
+package me.nicodax.day1;
+
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -37,7 +38,7 @@ public class Day1Test {
         assertEquals(expectedListOfCaloriesPerElf, day1.getListOfCaloriesPerElf());
     }
 
-    @Disabled("PART 1 SOLUTION")
+    @Disabled
     @Test
     public void day1_part1() {
         Day1 day1 = new Day1();
@@ -56,7 +57,7 @@ public class Day1Test {
         assertEquals(expectedMaxCalories, day1.getTopThreeSumCalories());
     }
 
-    @Disabled("PART 2 SOLUTION")
+    @Disabled
     @Test
     public void day1_part2() {
         Day1 day1 = new Day1();
