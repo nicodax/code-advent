@@ -1,7 +1,5 @@
 package me.nicodax.day8;
 
-import me.nicodax.day8.Day8;
-import me.nicodax.day8.Tree;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
