@@ -51,6 +51,8 @@ public class Day1 {
     }
 
     public Integer getPart2Solution() {
-        return -1;
+        Collections.sort(totalCaloriesPerElfList);
+        Collections.reverse(totalCaloriesPerElfList);
+        return totalCaloriesPerElfList.subList(0, 3).stream().mapToInt(Integer::intValue).sum();
     }
 }
