@@ -1,59 +1,51 @@
 package me.nicodax.day4;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static java.util.Arrays.asList;
 import static java.util.Arrays.stream;
+import static me.nicodax.day4.OverlapType.FULL;
+import static me.nicodax.day4.OverlapType.PARTIAL;
 
+@NoArgsConstructor
 public class Day4 {
-    private Integer fullyOverlappedCount;
-    private Integer overlappedCount;
+    private Integer fullyContainedCounter = 0;
+    private Integer partiallyContainedCounter = 0;
 
     public Integer getPart1Solution() {
-        return fullyOverlappedCount;
+        return fullyContainedCounter;
     }
 
     public Integer getPart2Solution() {
-        return overlappedCount;
+        return fullyContainedCounter + partiallyContainedCounter;
     }
 
     public void readAndParseFile(Path path) {
-        fullyOverlappedCount = 0;
-        overlappedCount = 0;
-        try (Stream<String> linesStream = Files.lines(path)){
+        try (Stream<String> linesStream = Files.lines(path)) {
             List<String> lines = linesStream.toList();
             for (String line : lines) {
                 if (line.isBlank()) continue;
-                List<List<Integer>> elfSections = convertLineToListOfListOfIntegers(line);
-                if (areFullyOverlapped(elfSections.get(0), elfSections.get(1))) fullyOverlappedCount++;
-                if (areAtLeastPartiallyOverlapped(elfSections.get(0), elfSections.get(1))) overlappedCount++;
+                List<String> sectionArgs = stream(line.trim().split(",")).toList();
+                List<Integer> sectionAIdRange =
+                        stream(sectionArgs.get(0).split("-")).mapToInt(Integer::parseInt).boxed().toList();
+                Section sectionA = new Section(sectionAIdRange.get(0), sectionAIdRange.get(1));
+                List<Integer> sectionBIdRange =
+                        stream(sectionArgs.get(1).split("-")).mapToInt(Integer::parseInt).boxed().toList();
+                Section sectionB = new Section(sectionBIdRange.get(0), sectionBIdRange.get(1));
+                if (sectionA.contains(sectionB).equals(FULL) || sectionB.contains(sectionA).equals(FULL))
+                    fullyContainedCounter++;
+                else if (sectionA.contains(sectionB).equals(PARTIAL)) partiallyContainedCounter++;
             }
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             System.out.println(e);
         }
-    }
-
-    public List<List<Integer>> convertLineToListOfListOfIntegers(String line) {
-        List<String> pairSectionListAsString = stream(line.split(",")).toList();
-        List<Integer> elf1Section = stream(pairSectionListAsString.get(0).split("-"))
-                .mapToInt(Integer::parseInt).boxed().toList();
-        List<Integer> elf2Section = stream(pairSectionListAsString.get(1).split("-"))
-                .mapToInt(Integer::parseInt).boxed().toList();
-        return new ArrayList<>(asList(elf1Section, elf2Section));
-    }
-
-    public Boolean areFullyOverlapped(List<Integer> elf1Sections, List<Integer> elf2Sections) {
-        if (elf1Sections.get(0) <= elf2Sections.get(0) && elf1Sections.get(1) >= elf2Sections.get(1)) return true;
-        else return elf2Sections.get(0) <= elf1Sections.get(0) && elf2Sections.get(1) >= elf1Sections.get(1);
-    }
-
-    public Boolean areAtLeastPartiallyOverlapped(List<Integer> elf1Sections, List<Integer> elf2Sections) {
-        if (elf1Sections.get(0) <= elf2Sections.get(0) && elf1Sections.get(1) >= elf2Sections.get(0)) return true;
-        return elf2Sections.get(0) <= elf1Sections.get(0) && elf2Sections.get(1) >= elf1Sections.get(0);
     }
 }
