@@ -1,6 +1,5 @@
 package me.nicodax.day7;
 
-import me.nicodax.day7.Dir;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

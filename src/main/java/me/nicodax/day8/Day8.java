@@ -12,7 +12,7 @@ public class Day8 {
     private final HashMap<String, Tree> visibleTrees = new HashMap<>();
     private Integer highestScenicScore = 0;
 
-    public Integer getHighestScenicScore() {
+    public Integer getPart2Solution() {
         return highestScenicScore;
     }
 
@@ -161,7 +161,7 @@ public class Day8 {
         return x + "-" + y;
     }
 
-    public Integer getNumberOfVisibleTrees() {
+    public Integer getPart1Solution() {
         return visibleTrees.size();
     }
 }

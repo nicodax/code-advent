@@ -21,9 +21,7 @@ public class Day1 {
                     listOfCaloriesPerElf.add(currentCalories);
                     currentCalories = 0;
                 }
-                else {
-                    currentCalories += parseInt(line);
-                }
+                else currentCalories += parseInt(line);
             }
             listOfCaloriesPerElf.add(currentCalories);
         } catch (IOException e) {
@@ -31,11 +29,11 @@ public class Day1 {
         }
     }
 
-    public Integer getMaxCalories() {
+    public Integer getPart1Solution() {
         return listOfCaloriesPerElf.stream().mapToInt(v -> v).max().orElse(0);
     }
 
-    public Integer getTopThreeSumCalories() {
+    public Integer getPart2Solution() {
         List<Integer> workingList = new ArrayList<>(listOfCaloriesPerElf);
         Integer top1 = workingList.stream().mapToInt(v -> v).max().orElse(0);
         workingList.remove(top1);

@@ -13,7 +13,6 @@ import static java.util.Arrays.asList;
 public class Day3 {
     private List<Integer> misplacedItemPriorityList = new ArrayList<>();
     private List<Integer> groupBadgeItemPriorityList = new ArrayList<>();
-    private final Integer LAST_PRIORITY_OF_LOWERCASE_ITEMS = 26;
 
     public void readAndParseFile(Path path) {
         List<Character> misplacedItemList = new ArrayList<>();
@@ -65,16 +64,17 @@ public class Day3 {
     }
 
     public Integer mapItemToPriority(Character item) {
+        int LAST_PRIORITY_OF_LOWERCASE_ITEMS = 26;
         if ((int) item >= 'A' && (int) item <= 'Z') return (int) item - ('A' - 1) + LAST_PRIORITY_OF_LOWERCASE_ITEMS;
         if ((int) item >= 'a' && (int) item <= 'z') return (int) item - ('a' - 1);
         return 0;
     }
 
-    public Integer getPrioritySum() {
+    public Integer getPart1Solution() {
         return misplacedItemPriorityList.stream().mapToInt(v -> v).sum();
     }
 
-    public Integer getGroupBadgePrioritySum() {
+    public Integer getPart2Solution() {
         return groupBadgeItemPriorityList.stream().mapToInt(v -> v).sum();
     }
 

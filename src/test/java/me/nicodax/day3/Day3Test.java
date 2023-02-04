@@ -69,7 +69,7 @@ public class Day3Test {
         List<Integer> fakeMisplacedItemPriorityList = asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
         day3.setMisplacedItemPriorityList(fakeMisplacedItemPriorityList);
         Integer expectedPrioritySum = 45;
-        assertEquals(expectedPrioritySum, day3.getPrioritySum());
+        assertEquals(expectedPrioritySum, day3.getPart1Solution());
     }
 
     @Test
@@ -86,7 +86,7 @@ public class Day3Test {
     public void day3_part1() {
         Day3 day3 = new Day3();
         day3.readAndParseFile(PATH_TO_INPUT);
-        System.out.println("PART 1 SOLUTION: " + day3.getPrioritySum());
+        System.out.println("PART 1 SOLUTION: " + day3.getPart1Solution());
     }
 
     @Test
@@ -107,7 +107,7 @@ public class Day3Test {
         List<Integer> fakeGroupBadgeItemPriorityList = asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
         day3.setGroupBadgeItemPriorityList(fakeGroupBadgeItemPriorityList);
         Integer expectedPrioritySum = 45;
-        assertEquals(expectedPrioritySum, day3.getGroupBadgePrioritySum());
+        assertEquals(expectedPrioritySum, day3.getPart2Solution());
     }
 
     @Disabled
@@ -115,6 +115,6 @@ public class Day3Test {
     public void day3_part2() {
         Day3 day3 = new Day3();
         day3.readAndParseFile(PATH_TO_INPUT);
-        System.out.println("PART 2 SOLUTION: " + day3.getGroupBadgePrioritySum());
+        System.out.println("PART 2 SOLUTION: " + day3.getPart2Solution());
     }
 }

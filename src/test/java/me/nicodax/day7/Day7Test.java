@@ -1,7 +1,5 @@
 package me.nicodax.day7;
 
-import me.nicodax.day7.Day7;
-import me.nicodax.day7.Dir;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -181,7 +179,7 @@ public class Day7Test {
     public void findTotalSizeForEveryDirectoryWithLessThanMaxSize() {
         Day7 day7 = new Day7();
         day7.readAndParseFile(PATH_TO_TEST_INPUT);
-        assertEquals(95437, day7.findTotalSizeForEveryDirectoryWithLessThanMaxSize());
+        assertEquals(95437, day7.getPart1Solution());
     }
 
     @Disabled
@@ -189,7 +187,7 @@ public class Day7Test {
     public void day7_part1() {
         Day7 day7 = new Day7();
         day7.readAndParseFile(PATH_TO_INPUT);
-        System.out.println("PART 1 SOLUTION: " + day7.findTotalSizeForEveryDirectoryWithLessThanMaxSize());
+        System.out.println("PART 1 SOLUTION: " + day7.getPart1Solution());
     }
 
     @Test
@@ -197,7 +195,7 @@ public class Day7Test {
     public void findSmallestDirToFreeUpRequiredSpace() {
         Day7 day7 = new Day7();
         day7.readAndParseFile(PATH_TO_TEST_INPUT);
-        assertEquals(24933642, day7.findSmallestDirSizeToFreeUpRequiredSpace());
+        assertEquals(24933642, day7.getPart2Solution());
     }
 
     @Disabled
@@ -205,6 +203,6 @@ public class Day7Test {
     public void day7_part2() {
         Day7 day7 = new Day7();
         day7.readAndParseFile(PATH_TO_INPUT);
-        System.out.println("PART 2 SOLUTION: " + day7.findSmallestDirSizeToFreeUpRequiredSpace());
+        System.out.println("PART 2 SOLUTION: " + day7.getPart2Solution());
     }
 }

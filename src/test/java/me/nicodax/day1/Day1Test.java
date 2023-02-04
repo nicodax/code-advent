@@ -25,7 +25,7 @@ public class Day1Test {
         Integer expectedMaxCalories = 8000;
         day1.setListOfCaloriesPerElf(fakeListOfCaloriesPerElf);
 
-        assertEquals(expectedMaxCalories, day1.getMaxCalories());
+        assertEquals(expectedMaxCalories, day1.getPart1Solution());
     }
 
     @Test
@@ -43,7 +43,7 @@ public class Day1Test {
     public void day1_part1() {
         Day1 day1 = new Day1();
         day1.readAndParseFile(PATH_TO_INPUT);
-        System.out.println("PART 1 SOLUTION: " + day1.getMaxCalories());
+        System.out.println("PART 1 SOLUTION: " + day1.getPart1Solution());
     }
 
     @Test
@@ -54,7 +54,7 @@ public class Day1Test {
         Integer expectedMaxCalories = 8000 + 7000 + 6000;
         day1.setListOfCaloriesPerElf(fakeListOfCaloriesPerElf);
 
-        assertEquals(expectedMaxCalories, day1.getTopThreeSumCalories());
+        assertEquals(expectedMaxCalories, day1.getPart2Solution());
     }
 
     @Disabled
@@ -62,7 +62,7 @@ public class Day1Test {
     public void day1_part2() {
         Day1 day1 = new Day1();
         day1.readAndParseFile(PATH_TO_INPUT);
-        System.out.println("PART 2 SOLUTION: " + day1.getTopThreeSumCalories());
+        System.out.println("PART 2 SOLUTION: " + day1.getPart2Solution());
     }
 
 }

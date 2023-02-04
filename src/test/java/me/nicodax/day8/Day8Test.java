@@ -60,7 +60,7 @@ public class Day8Test {
         String line = "30373";
         day8.rightLeft(line, 1);
 
-        assertEquals(2, day8.getNumberOfVisibleTrees());
+        assertEquals(2, day8.getPart1Solution());
         assertNotNull(day8.getVisibleTrees().get("5-1"));
         assertNotNull(day8.getVisibleTrees().get("4-1"));
     }
@@ -72,7 +72,7 @@ public class Day8Test {
         String line = "30373";
         day8.leftRight(line, 1);
 
-        assertEquals(2, day8.getNumberOfVisibleTrees());
+        assertEquals(2, day8.getPart1Solution());
         assertNotNull(day8.getVisibleTrees().get("1-1"));
         assertNotNull(day8.getVisibleTrees().get("4-1"));
     }
@@ -84,7 +84,7 @@ public class Day8Test {
         String column = "32633";
         day8.downTop(column, 1);
 
-        assertEquals(2, day8.getNumberOfVisibleTrees());
+        assertEquals(2, day8.getPart1Solution());
         assertNotNull(day8.getVisibleTrees().get("1-5"));
         assertNotNull(day8.getVisibleTrees().get("1-3"));
     }
@@ -96,7 +96,7 @@ public class Day8Test {
         String column = "32633";
         day8.topDown(column, 1);
 
-        assertEquals(2, day8.getNumberOfVisibleTrees());
+        assertEquals(2, day8.getPart1Solution());
         assertNotNull(day8.getVisibleTrees().get("1-1"));
         assertNotNull(day8.getVisibleTrees().get("1-3"));
     }
@@ -107,7 +107,7 @@ public class Day8Test {
         Day8 day8 = new Day8();
         day8.readAndParseFile(PATH_TO_TEST_INPUT);
 
-        assertEquals(21, day8.getNumberOfVisibleTrees());
+        assertEquals(21, day8.getPart1Solution());
         // BORDERS
         assertNotNull(day8.getVisibleTrees().get("1-1"));
         assertNotNull(day8.getVisibleTrees().get("2-1"));
@@ -142,7 +142,7 @@ public class Day8Test {
     public void day8_part1() {
         Day8 day8 = new Day8();
         day8.readAndParseFile(PATH_TO_INPUT);
-        System.out.println("PART 1 SOLUTION: " + day8.getNumberOfVisibleTrees());
+        System.out.println("PART 1 SOLUTION: " + day8.getPart1Solution());
     }
 
     @Test
@@ -198,7 +198,7 @@ public class Day8Test {
     public void readAndParseFileThenGetHighestScenicScore() {
         Day8 day8 = new Day8();
         day8.readAndParseFile(PATH_TO_TEST_INPUT);
-        assertEquals(8, day8.getHighestScenicScore());
+        assertEquals(8, day8.getPart2Solution());
     }
 
     @Disabled
@@ -206,6 +206,6 @@ public class Day8Test {
     public void day8_part2() {
         Day8 day8 = new Day8();
         day8.readAndParseFile(PATH_TO_INPUT);
-        System.out.println("PART 2 SOLUTION: " + day8.getHighestScenicScore());
+        System.out.println("PART 2 SOLUTION: " + day8.getPart2Solution());
     }
 }

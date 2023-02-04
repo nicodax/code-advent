@@ -54,7 +54,7 @@ public class Day4Test {
         Day4 day4 = new Day4();
         day4.readAndParseFile(PATH_TO_TEST_INPUT);
         Integer expectedOverlapCount = 8;
-        assertEquals(expectedOverlapCount, day4.getFullyOverlappedCount());
+        assertEquals(expectedOverlapCount, day4.getPart1Solution());
     }
 
     @Disabled
@@ -62,7 +62,7 @@ public class Day4Test {
     public void day4_part1() {
         Day4 day4 = new Day4();
         day4.readAndParseFile(PATH_TO_INPUT);
-        System.out.println("PART 1 SOLUTION: " + day4.getFullyOverlappedCount());
+        System.out.println("PART 1 SOLUTION: " + day4.getPart1Solution());
     }
 
 
@@ -100,8 +100,8 @@ public class Day4Test {
         day4.readAndParseFile(PATH_TO_TEST_INPUT);
         Integer expectedFullyOverlappedCount = 8;
         Integer expectedOverlappedCount = 9;
-        assertEquals(expectedFullyOverlappedCount, day4.getFullyOverlappedCount());
-        assertEquals(expectedOverlappedCount, day4.getOverlappedCount());
+        assertEquals(expectedFullyOverlappedCount, day4.getPart1Solution());
+        assertEquals(expectedOverlappedCount, day4.getPart2Solution());
     }
 
     @Disabled
@@ -109,6 +109,6 @@ public class Day4Test {
     public void day4_part2() {
         Day4 day4 = new Day4();
         day4.readAndParseFile(PATH_TO_INPUT);
-        System.out.println("PART 2 SOLUTION: " + day4.getOverlappedCount());
+        System.out.println("PART 2 SOLUTION: " + day4.getPart2Solution());
     }
 }

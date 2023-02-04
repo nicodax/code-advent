@@ -12,9 +12,6 @@ import java.util.stream.Stream;
 import static java.lang.Integer.parseInt;
 
 public class Day5 {
-    private final Integer STACK_WIDTH = 3;
-    private final Integer STACK_SEPARATOR_WIDTH = 1;
-    private final Integer CHAR_POSITION_WITHIN_STACK = 1;
     private HashMap<Integer, List<Character>> crateStacks = new HashMap<>();
 
     public void readAndParseFile(Path path, Integer part) {
@@ -42,6 +39,9 @@ public class Day5 {
     public void parseCratesStack(String line) {
         int numberOfStacks = (line.length() + 1) / 4;
         for (int stack = 0; stack < numberOfStacks; stack++) {
+            Integer STACK_WIDTH = 3;
+            Integer STACK_SEPARATOR_WIDTH = 1;
+            int CHAR_POSITION_WITHIN_STACK = 1;
             int characterIndex = stack * (STACK_WIDTH + STACK_SEPARATOR_WIDTH) + CHAR_POSITION_WITHIN_STACK;
             char crate = line.charAt(characterIndex);
             if (crate == ' ') continue;
@@ -71,7 +71,7 @@ public class Day5 {
             crateStacks.put(fromCraneStackIndex, fromCrateStack);
         }
         if (cratesOnCrane.isEmpty()) return;
-        Integer cratesOnCraneInitialSize = cratesOnCrane.size();
+        int cratesOnCraneInitialSize = cratesOnCrane.size();
         for (int i = 0; i < cratesOnCraneInitialSize; i++) {
             List<Character> toCrateStack = crateStacks.get(toCraneStackIndex);
             Character movingCrate = cratesOnCrane.remove(cratesOnCrane.size() - 1);
@@ -88,7 +88,7 @@ public class Day5 {
         this.crateStacks = crateStacks;
     }
 
-    public String getTopCrateOnEachStack() {
+    public String getSolution() {
         StringBuilder topCrates = new StringBuilder();
         for (List<Character> crateStack : crateStacks.values()) {
             topCrates.append(crateStack.get(crateStack.size() - 1));
