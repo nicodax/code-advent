@@ -105,6 +105,7 @@ public class TestSolutions {
         day5.readAndParseFile(PATH_TO_DAY_5_INPUT, 2);
         assertEquals("FSZWBPTBG", day5.getSolution());
     }
+
     @Test
     public void day6_part1() {
         Day6 day6 = new Day6(4);
