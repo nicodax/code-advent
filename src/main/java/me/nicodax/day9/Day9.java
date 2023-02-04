@@ -15,6 +15,10 @@ import static java.util.Arrays.asList;
 public class Day9 {
     Rope rope;
 
+    public Integer getSolution() {
+        return rope.getNumberOfPositionsTailVisitedAtLeastOnce();
+    }
+
     public Day9(Integer ropeLength) {
         this.rope = new Rope(ropeLength);
     }

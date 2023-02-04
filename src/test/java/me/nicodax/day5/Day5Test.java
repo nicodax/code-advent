@@ -92,7 +92,7 @@ public class Day5Test {
 
         HashMap<Integer, List<Character>> expectedCrateStacks = new HashMap<>();
         for (int index = 1; index <= existingCrateStacks.size(); index++) {
-            expectedCrateStacks.put(index, new ArrayList<Character>(existingCrateStacks.get(index)));
+            expectedCrateStacks.put(index, new ArrayList<>(existingCrateStacks.get(index)));
         }
         List<Character> crateStack2 = expectedCrateStacks.get(2);
         crateStack2.add('T');
@@ -115,7 +115,7 @@ public class Day5Test {
         day5.setCrateStacks(existingCrateStacks);
         String expectedResult = "CHST";
 
-        assertEquals(expectedResult, day5.getTopCrateOnEachStack());
+        assertEquals(expectedResult, day5.getSolution());
     }
 
     @Test
@@ -163,7 +163,7 @@ public class Day5Test {
     public void day5_part1() {
         Day5 day5 = new Day5();
         day5.readAndParseFile(PATH_TO_INPUT, 1);
-        System.out.println("PART 1 SOLUTION: " + day5.getTopCrateOnEachStack());
+        System.out.println("PART 1 SOLUTION: " + day5.getSolution());
     }
 
     @Test
@@ -176,7 +176,7 @@ public class Day5Test {
 
         HashMap<Integer, List<Character>> expectedCrateStacks = new HashMap<>();
         for (int index = 1; index <= existingCrateStacks.size(); index++) {
-            expectedCrateStacks.put(index, new ArrayList<Character>(existingCrateStacks.get(index)));
+            expectedCrateStacks.put(index, new ArrayList<>(existingCrateStacks.get(index)));
         }
         List<Character> crateStack2 = expectedCrateStacks.get(2);
         crateStack2.add('L');
@@ -234,6 +234,6 @@ public class Day5Test {
     public void day5_part2() {
         Day5 day5 = new Day5();
         day5.readAndParseFile(PATH_TO_INPUT, 2);
-        System.out.println("PART 2 SOLUTION: " + day5.getTopCrateOnEachStack());
+        System.out.println("PART 2 SOLUTION: " + day5.getSolution());
     }
 }

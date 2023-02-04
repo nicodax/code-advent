@@ -15,7 +15,6 @@ public class Day6Test {
     private final Path PATH_TO_TEST_INPUT = Paths.get(System.getProperty("user.dir")
                                                               + "\\src\\main\\resources\\test-input-day6.txt");
     private final Integer PART_1_MARKER_SIZE = 4;
-    private final Integer PART_2_MARKER_SIZE = 14;
 
     @Test
     @DisplayName("Should find the first marker index within given line.")
@@ -32,7 +31,7 @@ public class Day6Test {
         Day6 day6 = new Day6(PART_1_MARKER_SIZE);
         day6.readAndParseFile(PATH_TO_TEST_INPUT);
         Integer expectedFirstMarkerIndex = 21;
-        assertEquals(expectedFirstMarkerIndex, day6.getFirstMarkerIndex());
+        assertEquals(expectedFirstMarkerIndex, day6.getSolution());
     }
 
     @Disabled
@@ -40,14 +39,15 @@ public class Day6Test {
     public void day6_part1() {
         Day6 day6 = new Day6(PART_1_MARKER_SIZE);
         day6.readAndParseFile(PATH_TO_INPUT);
-        System.out.println("PART 1 SOLUTION: " + day6.getFirstMarkerIndex());
+        System.out.println("PART 1 SOLUTION: " + day6.getSolution());
     }
 
     @Disabled
     @Test
     public void day6_part2() {
+        Integer PART_2_MARKER_SIZE = 14;
         Day6 day6 = new Day6(PART_2_MARKER_SIZE);
         day6.readAndParseFile(PATH_TO_INPUT);
-        System.out.println("PART 2 SOLUTION: " + day6.getFirstMarkerIndex());
+        System.out.println("PART 2 SOLUTION: " + day6.getSolution());
     }
 }

@@ -14,10 +14,8 @@ import static java.lang.Integer.parseInt;
 
 public class Day7 {
     private final Integer MAX_DIRECTORY_SIZE = 100000;
-    private final Integer DISK_SPACE = 70000000;
-    private final Integer SPACE_REQUIRED_FOR_UPDATE = 30000000;
     private String presentWorkingDirectory = "";
-    private HashMap<String, Dir> directories = new HashMap<>();
+    private final HashMap<String, Dir> directories = new HashMap<>();
 
     public void setPresentWorkingDirectory(String presentWorkingDirectory) {
         this.presentWorkingDirectory = presentWorkingDirectory;
@@ -25,10 +23,6 @@ public class Day7 {
 
     public String getPresentWorkingDirectory() {
         return presentWorkingDirectory;
-    }
-
-    public void setDirectories(HashMap<String, Dir> directories) {
-        this.directories = directories;
     }
 
     public HashMap<String, Dir> getDirectories() {
@@ -82,13 +76,15 @@ public class Day7 {
         }
     }
 
-    public Integer findTotalSizeForEveryDirectoryWithLessThanMaxSize() {
+    public Integer getPart1Solution() {
         List<Integer> directorySizes = directories.values().stream().map(Dir::getTotalSize).toList();
         return directorySizes.stream().filter(size -> size <= MAX_DIRECTORY_SIZE).reduce(0, Integer::sum);
     }
 
-    public Integer findSmallestDirSizeToFreeUpRequiredSpace() {
+    public Integer getPart2Solution() {
+        Integer DISK_SPACE = 70000000;
         Integer availableSpace = DISK_SPACE - directories.get("/").getTotalSize();
+        Integer SPACE_REQUIRED_FOR_UPDATE = 30000000;
         Integer requiredSpace = SPACE_REQUIRED_FOR_UPDATE - availableSpace;
         List<Entry<String, Dir>> candidateList = new ArrayList<>();
         for (Entry<String, Dir> dirEntry : directories.entrySet()) {

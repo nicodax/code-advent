@@ -79,7 +79,7 @@ public class Day2Test {
         Integer expectedTotalScore = 51;
         day2.setListOfRPSPointsByRound(listOfRPSPointsByRound);
 
-        assertEquals(expectedTotalScore, day2.getMyTotalScore());
+        assertEquals(expectedTotalScore, day2.getSolution());
     }
 
     @Disabled
@@ -87,7 +87,7 @@ public class Day2Test {
     public void day2_part1() {
         Day2 day2 = new Day2();
         day2.readAndParseFile(PATH_TO_INPUT, 1);
-        System.out.println("PART 1 SOLUTION: " + day2.getMyTotalScore());
+        System.out.println("PART 1 SOLUTION: " + day2.getSolution());
     }
     
     @Test
@@ -114,6 +114,6 @@ public class Day2Test {
     public void day2_part2() {
         Day2 day2 = new Day2();
         day2.readAndParseFile(PATH_TO_INPUT, 2);
-        System.out.println("PART 2 SOLUTION: " + day2.getMyTotalScore());
+        System.out.println("PART 2 SOLUTION: " + day2.getSolution());
     }
 }

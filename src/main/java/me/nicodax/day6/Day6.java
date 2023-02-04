@@ -28,7 +28,7 @@ public class Day6 {
         }
     }
 
-    public Integer getFirstMarkerIndex() {
+    public Integer getSolution() {
         return firstMarkerIndex;
     }
 

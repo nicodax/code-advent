@@ -14,11 +14,11 @@ public class Day4 {
     private Integer fullyOverlappedCount;
     private Integer overlappedCount;
 
-    public Integer getFullyOverlappedCount() {
+    public Integer getPart1Solution() {
         return fullyOverlappedCount;
     }
 
-    public Integer getOverlappedCount() {
+    public Integer getPart2Solution() {
         return overlappedCount;
     }
 

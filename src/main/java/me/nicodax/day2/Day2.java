@@ -61,7 +61,7 @@ public class Day2 {
         else return 0;
     }
 
-    public Integer getMyTotalScore() {
+    public Integer getSolution() {
         return listOfRPSPointsByRound.stream().mapToInt(v -> v).sum();
     }
 
