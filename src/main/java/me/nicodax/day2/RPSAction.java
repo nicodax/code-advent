@@ -8,6 +8,7 @@ public enum RPSAction {
     ROCK, PAPER, SCISSORS;
 
     public static RPSAction fromResultAndOpponentAction(RPSResult result, RPSAction opponentAction) {
+        // get my action from round result and opponent action
         if (opponentAction.equals(ROCK) && result.equals(WIN)) return PAPER;
         else if (opponentAction.equals(ROCK) && result.equals(DRAW)) return ROCK;
         else if (opponentAction.equals(ROCK) && result.equals(LOSE)) return SCISSORS;
