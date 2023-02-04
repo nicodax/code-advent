@@ -35,4 +35,16 @@ public class TestInputs {
 
         assertEquals(expectedTotalCalories, day1.getPart1Solution());
     }
+
+    @Test
+    @DisplayName("It should return the the total amount of calories carried by the three elves "
+            + "carrying the most calories.")
+    public void getTotalCaloriesForHeaviestThreeElves() {
+        Day1 day1 = new Day1();
+        Integer expectedTotalCalories = 45000;
+
+        day1.readAndParseFile(PATH_TO_DAY_1_TEST_INPUT);
+
+        assertEquals(expectedTotalCalories, day1.getPart2Solution());
+    }
 }
