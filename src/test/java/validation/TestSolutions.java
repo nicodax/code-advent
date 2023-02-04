@@ -52,15 +52,15 @@ public class TestSolutions {
 
     @Test
     public void day2Part1Solution() {
-        Day2 day2 = new Day2();
-        day2.readAndParseFile(PATH_TO_DAY_2_INPUT, 1);
+        Day2 day2 = new Day2(1);
+        day2.readAndParseFile(PATH_TO_DAY_2_INPUT);
         assertEquals(11666, day2.getSolution());
     }
 
     @Test
     public void day2Part2Solution() {
-        Day2 day2 = new Day2();
-        day2.readAndParseFile(PATH_TO_DAY_2_INPUT, 2);
+        Day2 day2 = new Day2(2);
+        day2.readAndParseFile(PATH_TO_DAY_2_INPUT);
         assertEquals(12767, day2.getSolution());
     }
 
