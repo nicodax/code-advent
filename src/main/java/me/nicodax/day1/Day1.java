@@ -1,54 +1,56 @@
 package me.nicodax.day1;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
 import static java.lang.Integer.parseInt;
+import static java.util.Collections.max;
 
+@NoArgsConstructor
+@Getter
+@Setter
 public class Day1 {
-    private List<Integer> listOfCaloriesPerElf = new ArrayList<>();
+    private final List<Integer> totalCaloriesPerElfList = new ArrayList<>(Collections.singletonList(0));
 
     public void readAndParseFile(Path path) {
-        listOfCaloriesPerElf = new ArrayList<>();
-        try (Stream<String> lines = Files.lines(path)){
-            int currentCalories = 0;
+        try (Stream<String> lines = Files.lines(path)) {
+            int currentElfIndex = 0;
             for (String line : lines.toList()) {
-                if (line.isBlank()) {
-                    listOfCaloriesPerElf.add(currentCalories);
-                    currentCalories = 0;
+                if (line.isBlank()) { // elf inventory separator
+                    currentElfIndex++;
+                    continue;
                 }
-                else currentCalories += parseInt(line);
+                if (currentElfIndex >= totalCaloriesPerElfList.size()) totalCaloriesPerElfList.add(0); // initialize empty
+                // increment total inventory size for current elf:
+                addCalorieToCurrentTotalFor(currentElfIndex, parseInt(line));
             }
-            listOfCaloriesPerElf.add(currentCalories);
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             System.out.println(e);
         }
     }
 
+    private void addCalorieToCurrentTotalFor(Integer currentElfIndex, Integer caloriesToAdd) {
+        Integer totalCaloriesForCurrentElf = totalCaloriesPerElfList.get(currentElfIndex);
+        totalCaloriesForCurrentElf += caloriesToAdd;
+        totalCaloriesPerElfList.set(currentElfIndex, totalCaloriesForCurrentElf);
+    }
+
     public Integer getPart1Solution() {
-        return listOfCaloriesPerElf.stream().mapToInt(v -> v).max().orElse(0);
+        // get max amount of calories carried by a single elf
+        return max(totalCaloriesPerElfList);
     }
 
     public Integer getPart2Solution() {
-        List<Integer> workingList = new ArrayList<>(listOfCaloriesPerElf);
-        Integer top1 = workingList.stream().mapToInt(v -> v).max().orElse(0);
-        workingList.remove(top1);
-        Integer top2 = workingList.stream().mapToInt(v -> v).max().orElse(0);
-        workingList.remove(top2);
-        Integer top3 = workingList.stream().mapToInt(v -> v).max().orElse(0);
-        workingList.remove(top3);
-        return top1 + top2 + top3;
-    }
-
-    public void setListOfCaloriesPerElf(List<Integer> listOfCaloriesPerElf) {
-        this.listOfCaloriesPerElf = listOfCaloriesPerElf;
-    }
-
-    public List<Integer> getListOfCaloriesPerElf() {
-        return listOfCaloriesPerElf;
+        return -1;
     }
 }
