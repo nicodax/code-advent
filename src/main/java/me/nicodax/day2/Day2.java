@@ -33,8 +33,10 @@ public class Day2 {
                 RPSAction myAction;
                 RPSAction opponentAction = fromAlias(args.get(0));
                 if (PART_NUMBER.equals(1)) {
+                    // if it is parsing for part 1, my action is the second character from the current line
                     myAction = fromAlias(args.get(1));
                 } else {
+                    // if it is parsing for part 2, the round result is the second character from the current line
                     opponentAction = fromAlias(args.get(0));
                     myAction = fromResultAndOpponentAction(RPSResult.fromAlias(args.get(1)), opponentAction);
                 }
@@ -46,6 +48,7 @@ public class Day2 {
     }
 
     public Integer getRoundScore(RPSAction myAction, RPSAction opponentAction) {
+        // get round score from both players' action
         if (myAction.equals(ROCK) && opponentAction.equals(PAPER)) return 1;
         else if (myAction.equals(PAPER) && opponentAction.equals(SCISSORS)) return 2;
         else if (myAction.equals(SCISSORS) && opponentAction.equals(ROCK)) return 3;
