@@ -107,14 +107,14 @@ public class TestSolutions {
     }
 
     @Test
-    public void day6_part1() {
+    public void day6Part1Solution() {
         Day6 day6 = new Day6(4);
         day6.readAndParseFile(PATH_TO_DAY_6_INPUT);
         assertEquals(1210, day6.getSolution());
     }
 
     @Test
-    public void day6_part2() {
+    public void day6Part2Solution() {
         Day6 day6 = new Day6(14);
         day6.readAndParseFile(PATH_TO_DAY_6_INPUT);
         assertEquals(3476, day6.getSolution());
