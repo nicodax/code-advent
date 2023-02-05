@@ -4,7 +4,6 @@ import me.nicodax.day1.Day1;
 import me.nicodax.day2.Day2;
 import me.nicodax.day3.Day3;
 import me.nicodax.day4.Day4;
-import me.nicodax.day4.Day4Bak;
 import me.nicodax.day5.Day5;
 import me.nicodax.day6.Day6;
 import me.nicodax.day7.Day7;
@@ -95,15 +94,15 @@ public class TestSolutions {
 
     @Test
     public void day5Part1Solution() {
-        Day5 day5 = new Day5();
-        day5.readAndParseFile(PATH_TO_DAY_5_INPUT, 1);
+        Day5 day5 = new Day5(1);
+        day5.readAndParseFile(PATH_TO_DAY_5_INPUT);
         assertEquals("CFFHVVHNC", day5.getSolution());
     }
 
     @Test
     public void day5Part2Solution() {
-        Day5 day5 = new Day5();
-        day5.readAndParseFile(PATH_TO_DAY_5_INPUT, 2);
+        Day5 day5 = new Day5(2);
+        day5.readAndParseFile(PATH_TO_DAY_5_INPUT);
         assertEquals("FSZWBPTBG", day5.getSolution());
     }
 
