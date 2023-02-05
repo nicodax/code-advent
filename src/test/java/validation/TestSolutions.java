@@ -128,7 +128,7 @@ public class TestSolutions {
     }
 
     @Test
-    public void day7_part2() {
+    public void day7Part2Solution() {
         Day7 day7 = new Day7();
         day7.readAndParseFile(PATH_TO_DAY_7_INPUT);
         assertEquals(3579501, day7.getPart2Solution());
