@@ -17,18 +17,6 @@ public class Day7 {
     private String presentWorkingDirectory = "";
     private final HashMap<String, Dir> directories = new HashMap<>();
 
-    public void setPresentWorkingDirectory(String presentWorkingDirectory) {
-        this.presentWorkingDirectory = presentWorkingDirectory;
-    }
-
-    public String getPresentWorkingDirectory() {
-        return presentWorkingDirectory;
-    }
-
-    public HashMap<String, Dir> getDirectories() {
-        return directories;
-    }
-
     public void readAndParseFile(Path path) {
         try (Stream<String> linesStream = Files.lines(path)) {
             List<String> lines = linesStream.toList();
@@ -63,6 +51,11 @@ public class Day7 {
         }
     }
 
+    public Integer getDirectoryTotalSize(String directoryFullPath) {
+        if (directories.get(directoryFullPath) != null) return directories.get(directoryFullPath).getTotalSize();
+        return -1;
+    }
+
     public void saveNewElement(String line) {
         String[] args = line.split(" ");
         if (args[0].equals("dir")) {
@@ -83,8 +76,8 @@ public class Day7 {
 
     public Integer getPart2Solution() {
         Integer DISK_SPACE = 70000000;
-        Integer availableSpace = DISK_SPACE - directories.get("/").getTotalSize();
         Integer SPACE_REQUIRED_FOR_UPDATE = 30000000;
+        Integer availableSpace = DISK_SPACE - directories.get("/").getTotalSize();
         Integer requiredSpace = SPACE_REQUIRED_FOR_UPDATE - availableSpace;
         List<Entry<String, Dir>> candidateList = new ArrayList<>();
         for (Entry<String, Dir> dirEntry : directories.entrySet()) {
