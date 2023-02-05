@@ -69,7 +69,7 @@ public class TestDay4 {
     }
 
     @Test
-    @DisplayName("Should return the number of occurences where a section in a pair fully contains the other section")
+    @DisplayName("Should return the number of occurrences where a section in a pair fully contains the other section")
     public void getNumberOfFullyContained() {
         Day4 day4 = new Day4();
         day4.readAndParseFile(PATH_TO_TEST_INPUT);
