@@ -4,6 +4,7 @@ import me.nicodax.day2.Day2;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -13,8 +14,12 @@ import static me.nicodax.day2.RPSAction.SCISSORS;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestDay2 {
+    private final String PATH_SEPARATOR = File.separator;
     private final Path PATH_TO_TEST_INPUT = Paths.get(System.getProperty("user.dir")
-                                                              + "\\src\\main\\resources\\test-input-day2.txt");
+            + PATH_SEPARATOR + "src"
+            + PATH_SEPARATOR + "main"
+            + PATH_SEPARATOR + "resources"
+            + PATH_SEPARATOR + "test-input-day2.txt");
 
     @Test
     @DisplayName("It should return the the score of an RPS round - part 1 round 1.")

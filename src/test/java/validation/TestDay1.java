@@ -4,6 +4,7 @@ import me.nicodax.day1.Day1;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
@@ -12,8 +13,12 @@ import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestDay1 {
+    private final String PATH_SEPARATOR = File.separator;
     private final Path PATH_TO_TEST_INPUT = Paths.get(System.getProperty("user.dir")
-                                                              + "\\src\\main\\resources\\test-input-day1.txt");
+            + PATH_SEPARATOR + "src"
+            + PATH_SEPARATOR + "main"
+            + PATH_SEPARATOR + "resources"
+            + PATH_SEPARATOR + "test-input-day1.txt");
 
     @Test
     @DisplayName("It should return the list of total carried calories per elf.")

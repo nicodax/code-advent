@@ -11,30 +11,59 @@ import me.nicodax.day8.Day8;
 import me.nicodax.day9.Day9;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestSolutions {
+    private final String PATH_SEPARATOR = File.separator;
     private final Path PATH_TO_DAY_1_INPUT = Paths.get(System.getProperty("user.dir")
-                                                               + "\\src\\main\\resources\\input-day1.txt");
+            + PATH_SEPARATOR + "src"
+            + PATH_SEPARATOR + "main"
+            + PATH_SEPARATOR + "resources"
+            + PATH_SEPARATOR + "input-day1.txt");
     private final Path PATH_TO_DAY_2_INPUT = Paths.get(System.getProperty("user.dir")
-                                                               + "\\src\\main\\resources\\input-day2.txt");
+            + PATH_SEPARATOR + "src"
+            + PATH_SEPARATOR + "main"
+            + PATH_SEPARATOR + "resources"
+            + PATH_SEPARATOR + "input-day2.txt");
     private final Path PATH_TO_DAY_3_INPUT = Paths.get(System.getProperty("user.dir")
-                                                               + "\\src\\main\\resources\\input-day3.txt");
+            + PATH_SEPARATOR + "src"
+            + PATH_SEPARATOR + "main"
+            + PATH_SEPARATOR + "resources"
+            + PATH_SEPARATOR + "input-day3.txt");
     private final Path PATH_TO_DAY_4_INPUT = Paths.get(System.getProperty("user.dir")
-                                                               + "\\src\\main\\resources\\input-day4.txt");
+            + PATH_SEPARATOR + "src"
+            + PATH_SEPARATOR + "main"
+            + PATH_SEPARATOR + "resources"
+            + PATH_SEPARATOR + "input-day4.txt");
     private final Path PATH_TO_DAY_5_INPUT = Paths.get(System.getProperty("user.dir")
-                                                               + "\\src\\main\\resources\\input-day5.txt");
+            + PATH_SEPARATOR + "src"
+            + PATH_SEPARATOR + "main"
+            + PATH_SEPARATOR + "resources"
+            + PATH_SEPARATOR + "input-day5.txt");
     private final Path PATH_TO_DAY_6_INPUT = Paths.get(System.getProperty("user.dir")
-                                                               + "\\src\\main\\resources\\input-day6.txt");
+            + PATH_SEPARATOR + "src"
+            + PATH_SEPARATOR + "main"
+            + PATH_SEPARATOR + "resources"
+            + PATH_SEPARATOR + "input-day6.txt");
     private final Path PATH_TO_DAY_7_INPUT = Paths.get(System.getProperty("user.dir")
-                                                               + "\\src\\main\\resources\\input-day7.txt");
+            + PATH_SEPARATOR + "src"
+            + PATH_SEPARATOR + "main"
+            + PATH_SEPARATOR + "resources"
+            + PATH_SEPARATOR + "input-day7.txt");
     private final Path PATH_TO_DAY_8_INPUT = Paths.get(System.getProperty("user.dir")
-                                                               + "\\src\\main\\resources\\input-day8.txt");
+            + PATH_SEPARATOR + "src"
+            + PATH_SEPARATOR + "main"
+            + PATH_SEPARATOR + "resources"
+            + PATH_SEPARATOR + "input-day8.txt");
     private final Path PATH_TO_DAY_9_INPUT = Paths.get(System.getProperty("user.dir")
-                                                               + "\\src\\main\\resources\\input-day9.txt");
+            + PATH_SEPARATOR + "src"
+            + PATH_SEPARATOR + "main"
+            + PATH_SEPARATOR + "resources"
+            + PATH_SEPARATOR + "input-day9.txt");
 
     @Test
     public void day1Part1Solution() {

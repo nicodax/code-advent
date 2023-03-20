@@ -5,6 +5,7 @@ import me.nicodax.day4.Section;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -15,8 +16,12 @@ import static me.nicodax.day4.OverlapType.PARTIAL;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestDay4 {
+    private final String PATH_SEPARATOR = File.separator;
     private final Path PATH_TO_TEST_INPUT = Paths.get(System.getProperty("user.dir")
-                                                              + "\\src\\main\\resources\\test-input-day4.txt");
+            + PATH_SEPARATOR + "src"
+            + PATH_SEPARATOR + "main"
+            + PATH_SEPARATOR + "resources"
+            + PATH_SEPARATOR + "test-input-day4.txt");
 
     @Test
     @DisplayName("Should return NONE if asked a section it does not fully contains")

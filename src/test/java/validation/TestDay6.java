@@ -4,22 +4,44 @@ import me.nicodax.day6.Day6;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestDay6 {
+    private final String PATH_SEPARATOR = File.separator;
     private final Path PATH_TO_TEST_INPUT_1 = Paths.get(System.getProperty("user.dir")
-                                                                + "\\src\\main\\resources\\test-input1-day6.txt");
+            + PATH_SEPARATOR + "src"
+            + PATH_SEPARATOR + "main"
+            + PATH_SEPARATOR + "resources"
+            + PATH_SEPARATOR + "test-input1-day6.txt");
     private final Path PATH_TO_TEST_INPUT_2 = Paths.get(System.getProperty("user.dir")
-                                                                + "\\src\\main\\resources\\test-input2-day6.txt");
+            + PATH_SEPARATOR + "src"
+            + PATH_SEPARATOR + "main"
+            + PATH_SEPARATOR + "resources"
+            + PATH_SEPARATOR + "test-input2-day6.txt");
     private final Path PATH_TO_TEST_INPUT_3 = Paths.get(System.getProperty("user.dir")
-                                                                + "\\src\\main\\resources\\test-input3-day6.txt");
+            + PATH_SEPARATOR + "src"
+            + PATH_SEPARATOR + "main"
+            + PATH_SEPARATOR + "resources"
+            + PATH_SEPARATOR + "test-input3-day6.txt");
     private final Path PATH_TO_TEST_INPUT_4 = Paths.get(System.getProperty("user.dir")
-                                                                + "\\src\\main\\resources\\test-input4-day6.txt");
+            + PATH_SEPARATOR + "src"
+            + PATH_SEPARATOR + "main"
+            + PATH_SEPARATOR + "resources"
+            + PATH_SEPARATOR + "test-input4-day6.txt");
     private final Path PATH_TO_TEST_INPUT_5 = Paths.get(System.getProperty("user.dir")
-                                                                + "\\src\\main\\resources\\test-input5-day6.txt");
+            + PATH_SEPARATOR + "src"
+            + PATH_SEPARATOR + "main"
+            + PATH_SEPARATOR + "resources"
+            + PATH_SEPARATOR + "test-input5-day6.txt");
+    private final Path PATH_TO_TEST_INPUT_6 = Paths.get(System.getProperty("user.dir")
+            + PATH_SEPARATOR + "src"
+            + PATH_SEPARATOR + "main"
+            + PATH_SEPARATOR + "resources"
+            + PATH_SEPARATOR + "test-input6-day6.txt");
 
     @Test
     @DisplayName("It should return the first character index after the first start-of-packet marker - input 1 part 1")

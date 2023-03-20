@@ -5,6 +5,7 @@ import me.nicodax.day5.Day5;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -15,8 +16,12 @@ import static me.nicodax.day5.CraneMode.ONE_BY_ONE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestDay5 {
+    private final String PATH_SEPARATOR = File.separator;
     private final Path PATH_TO_TEST_INPUT = Paths.get(System.getProperty("user.dir")
-                                                              + "\\src\\main\\resources\\test-input-day5.txt");
+            + PATH_SEPARATOR + "src"
+            + PATH_SEPARATOR + "main"
+            + PATH_SEPARATOR + "resources"
+            + PATH_SEPARATOR + "test-input-day5.txt");
 
     private Day5 setUpCrateStacks(Integer part) {
         Day5 day5 = new Day5(part);

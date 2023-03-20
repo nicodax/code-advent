@@ -6,14 +6,6 @@ public class Dir {
     private final HashMap<String, Integer> files = new HashMap<>();
     private final HashMap<String, Dir> directories = new HashMap<>();
 
-    public HashMap<String, Dir> getDirectories() {
-        return directories;
-    }
-
-    public HashMap<String, Integer> getFiles() {
-        return files;
-    }
-
     public Integer getTotalSize() {
         Integer filesTotalSize = 0;
         Integer directoriesTotalSize = 0;

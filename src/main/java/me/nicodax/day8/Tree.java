@@ -1,11 +1,8 @@
 package me.nicodax.day8;
 
-import lombok.AllArgsConstructor;
-import lombok.Value;
+public record Tree(Integer x, Integer y, Integer height) {
 
-@AllArgsConstructor
-@Value
-public class Tree {
-    Integer x;
-    Integer y;
+    public String getNextTreeId(Integer xModifier, Integer yModifier) {
+        return (x + xModifier) + "-" + (y + yModifier);
+    }
 }
