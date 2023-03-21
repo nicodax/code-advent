@@ -17,17 +17,13 @@ public class Day3 {
     public void readAndParseFile(Path path) {
         try (Stream<String> linesStream = Files.lines(path)) {
             List<String> lines = linesStream.toList();
-            Item currentGroupItem;
             for (String line : lines) {
-                int lineIndex = lines.indexOf(line);
-                if (lineIndex % 3 == 0) {
-                    // everytime the current line is the first line for a group (every other 3 lines)
-                    currentGroupItem = findGroupItem(lines, lineIndex);
-                    currentGroupBadgePrioritySum += currentGroupItem.getPriority();
-                }
                 if (line.isBlank()) continue;
-                Item item = findItemAppearingInBothCompartments(line);
-                currentPrioritySum += item.getPriority();
+                if (lines.indexOf(line) % 3 == 0) {
+                    // everytime the current line is the first line for a group (every other 3 lines)
+                    currentGroupBadgePrioritySum += findGroupItem(lines, lines.indexOf(line)).getPriority();
+                }
+                currentPrioritySum += findItemAppearingInBothCompartments(line).getPriority();
             }
         }
         catch (IOException e) {

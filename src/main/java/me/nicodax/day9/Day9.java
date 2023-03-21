@@ -20,7 +20,7 @@ public class Day9 {
     }
 
     public Day9(Integer ropeLength) {
-        this.rope = new Rope(ropeLength);
+        rope = new Rope(ropeLength);
     }
     public void readAndParseFile(Path path) {
         try (Stream<String> lines = Files.lines(path)) {

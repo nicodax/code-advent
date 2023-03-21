@@ -14,6 +14,7 @@ import static java.lang.Integer.parseInt;
 
 public class Day7 {
     private final Integer MAX_DIRECTORY_SIZE = 100000;
+    private final String ROOT_DIR = "/";
     private String presentWorkingDirectory = "";
     private final HashMap<String, Dir> directories = new HashMap<>();
 
@@ -32,7 +33,7 @@ public class Day7 {
     }
     public void changePresentWorkingDirectory(String line){
         if (line.equals("$ cd /")) {
-            presentWorkingDirectory = "/";
+            presentWorkingDirectory = ROOT_DIR;
             directories.put(presentWorkingDirectory, new Dir());
         }
         else if (line.equals("$ cd ..")) {
@@ -45,7 +46,7 @@ public class Day7 {
             presentWorkingDirectory = newPresentWorkingDirectory.toString();
         } else {
             String newDirectory = line.trim().replace("$ cd ", "");
-            presentWorkingDirectory = presentWorkingDirectory.equals("/") ?
+            presentWorkingDirectory = presentWorkingDirectory.equals(ROOT_DIR) ?
                                       presentWorkingDirectory + newDirectory :
                                       presentWorkingDirectory + "/" + newDirectory;
         }
@@ -59,7 +60,7 @@ public class Day7 {
     public void saveNewElement(String line) {
         String[] args = line.split(" ");
         if (args[0].equals("dir")) {
-            String newDirFullPath = presentWorkingDirectory.equals("/") ? presentWorkingDirectory + args[1] :
+            String newDirFullPath = presentWorkingDirectory.equals(ROOT_DIR) ? presentWorkingDirectory + args[1] :
                                     presentWorkingDirectory + "/" + args[1];
             Dir newDir = new Dir();
             directories.put(newDirFullPath, newDir);
@@ -77,7 +78,7 @@ public class Day7 {
     public Integer getPart2Solution() {
         Integer DISK_SPACE = 70000000;
         Integer SPACE_REQUIRED_FOR_UPDATE = 30000000;
-        Integer availableSpace = DISK_SPACE - directories.get("/").getTotalSize();
+        Integer availableSpace = DISK_SPACE - directories.get(ROOT_DIR).getTotalSize();
         Integer requiredSpace = SPACE_REQUIRED_FOR_UPDATE - availableSpace;
         List<Entry<String, Dir>> candidateList = new ArrayList<>();
         for (Entry<String, Dir> dirEntry : directories.entrySet()) {

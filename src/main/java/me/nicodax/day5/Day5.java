@@ -18,7 +18,7 @@ public class Day5 {
     private final List<CrateStack> crateStackList = new ArrayList<>();
 
     public Day5(Integer part) {
-        this.CRANE_MODE = CraneMode.fromPart(part);
+        CRANE_MODE = CraneMode.fromPart(part);
     }
 
     public void readAndParseFile(Path path) {
@@ -26,9 +26,8 @@ public class Day5 {
             List<String> lines = linesStream.toList();
             for (String line : lines) {
                 if (line.isBlank()) continue;
-                if (line.contains(" 1   ")) {
-                    createCraneStacks(lines, lines.indexOf(line) - 1);
-                } else if (line.contains(("move "))) {
+                if (line.contains(" 1   ")) createCraneStacks(lines, lines.indexOf(line) - 1);
+                else if (line.contains(("move "))) {
                     List<String> args = stream(line.trim().split(" ")).toList();
                     Integer numberOfCrates = parseInt(args.get(1));
                     CrateStack origin = crateStackList.get(parseInt(args.get(3)) - 1);

@@ -2,6 +2,7 @@ package validation;
 
 import me.nicodax.day8.Day8;
 import me.nicodax.day8.Tree;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -23,7 +24,10 @@ public class TestDay8 {
 
     private HashMap<String, Tree> treeHashMap;
 
-    private void setUpTestTrees(Day8 day8) {
+    /**
+     * This method is far from necessary for the tests below but allows for easier readability.
+     */
+    private void setUpTestTrees() {
         treeHashMap = new HashMap<>();
         // line 1
         treeHashMap.put("0-0", new Tree(0, 0, 3));
@@ -58,9 +62,10 @@ public class TestDay8 {
     }
 
     @Test
+    @DisplayName("All of the trees around the edge of the grid should be visible")
     public void treesAroundEdgesAreVisible() {
         Day8 day8 = new Day8();
-        setUpTestTrees(day8);
+        setUpTestTrees();
         day8.readAndParseFile(PATH_TO_TEST_INPUT);
         day8.getPart1Solution();
 
@@ -86,9 +91,10 @@ public class TestDay8 {
     }
 
     @Test
+    @DisplayName("Top left tree (1, 1) should be visible")
     public void topLeftTreeIsVisible() {
         Day8 day8 = new Day8();
-        setUpTestTrees(day8);
+        setUpTestTrees();
         day8.readAndParseFile(PATH_TO_TEST_INPUT);
         day8.getPart1Solution();
 
@@ -96,9 +102,10 @@ public class TestDay8 {
     }
 
     @Test
+    @DisplayName("Top middle tree (2, 1) should be visible")
     public void topMiddleTreeIsVisible() {
         Day8 day8 = new Day8();
-        setUpTestTrees(day8);
+        setUpTestTrees();
         day8.readAndParseFile(PATH_TO_TEST_INPUT);
         day8.getPart1Solution();
 
@@ -106,9 +113,10 @@ public class TestDay8 {
     }
 
     @Test
+    @DisplayName("Top right tree (3, 1) should not be visible")
     public void topRightTreeIsNotVisible() {
         Day8 day8 = new Day8();
-        setUpTestTrees(day8);
+        setUpTestTrees();
         day8.readAndParseFile(PATH_TO_TEST_INPUT);
         day8.getPart1Solution();
 
@@ -116,9 +124,10 @@ public class TestDay8 {
     }
 
     @Test
+    @DisplayName("Left middle tree (1, 2) should be visible")
     public void LeftMiddleTreeIsVisible() {
         Day8 day8 = new Day8();
-        setUpTestTrees(day8);
+        setUpTestTrees();
         day8.readAndParseFile(PATH_TO_TEST_INPUT);
         day8.getPart1Solution();
 
@@ -126,9 +135,10 @@ public class TestDay8 {
     }
 
     @Test
+    @DisplayName("Center tree (1, 2) should not be visible")
     public void centerTreeIsNotVisible() {
         Day8 day8 = new Day8();
-        setUpTestTrees(day8);
+        setUpTestTrees();
         day8.readAndParseFile(PATH_TO_TEST_INPUT);
         day8.getPart1Solution();
 
@@ -136,9 +146,10 @@ public class TestDay8 {
     }
 
     @Test
+    @DisplayName("Right middle tree (3, 2) should be visible")
     public void rightMiddleTreeIsVisible() {
         Day8 day8 = new Day8();
-        setUpTestTrees(day8);
+        setUpTestTrees();
         day8.readAndParseFile(PATH_TO_TEST_INPUT);
         day8.getPart1Solution();
 
@@ -146,9 +157,10 @@ public class TestDay8 {
     }
 
     @Test
+    @DisplayName("Bottom left tree (1, 3) should not be visible")
     public void bottomLeftTreeIsNotVisible() {
         Day8 day8 = new Day8();
-        setUpTestTrees(day8);
+        setUpTestTrees();
         day8.readAndParseFile(PATH_TO_TEST_INPUT);
         day8.getPart1Solution();
 
@@ -156,9 +168,10 @@ public class TestDay8 {
     }
 
     @Test
+    @DisplayName("Bottom left tree (3, 3) should not be visible")
     public void bottomRightTreeIsNotVisible() {
         Day8 day8 = new Day8();
-        setUpTestTrees(day8);
+        setUpTestTrees();
         day8.readAndParseFile(PATH_TO_TEST_INPUT);
         day8.getPart1Solution();
 
@@ -166,9 +179,10 @@ public class TestDay8 {
     }
 
     @Test
+    @DisplayName("Bottom middle tree (2, 3) should be visible")
     public void bottomMiddleTreeIsVisible() {
         Day8 day8 = new Day8();
-        setUpTestTrees(day8);
+        setUpTestTrees();
         day8.readAndParseFile(PATH_TO_TEST_INPUT);
         day8.getPart1Solution();
 
@@ -176,6 +190,7 @@ public class TestDay8 {
     }
 
     @Test
+    @DisplayName("It should return the number of visible trees in the test input file")
     public void countVisibleTrees() {
         Day8 day8 = new Day8();
         day8.readAndParseFile(PATH_TO_TEST_INPUT);
@@ -184,9 +199,11 @@ public class TestDay8 {
     }
 
     @Test
+    @DisplayName("It should return the hash map of tree ids and their associated scenic score " +
+            "for all trees in the test input file")
     public void treesScenicScore() {
         Day8 day8 = new Day8();
-        setUpTestTrees(day8);
+        setUpTestTrees();
         day8.readAndParseFile(PATH_TO_TEST_INPUT);
         HashMap<String, Integer> scenicScoreTreeHashMap = day8.getAllTreesScenicScore();
 
@@ -195,6 +212,7 @@ public class TestDay8 {
     }
 
     @Test
+    @DisplayName("It should return the maximum scenic score of all trees in the test input file")
     public void getMaxScenicScore() {
         Day8 day8 = new Day8();
         day8.readAndParseFile(PATH_TO_TEST_INPUT);

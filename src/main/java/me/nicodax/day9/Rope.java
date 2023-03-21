@@ -1,9 +1,7 @@
 package me.nicodax.day9;
 
-import com.google.common.annotations.VisibleForTesting;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.Value;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +23,7 @@ public class Rope {
 
     public Rope(Integer ropeLength) {
         this.ropeLength = ropeLength;
-        this.TAIL_INDEX = ropeLength - 1;
+        TAIL_INDEX = ropeLength - 1;
         for (int i = 0; i < ropeLength; i++) sectionPositionList.add(new Position(0, 0));
         tailPositionList.add(new Position(0, 0));
     }
@@ -74,16 +72,5 @@ public class Rope {
                                .map(p -> asList(p.getX(), p.getY()))
                                .collect(Collectors.toSet())
                                .size();
-    }
-
-    @VisibleForTesting
-    void addTailPosition(Position newPosition) {
-        tailPositionList.add(newPosition);
-    }
-
-    @VisibleForTesting
-    void setSectionPosition(Integer sectionIndex, Position newPosition) {
-        sectionPositionList.get(sectionIndex).setX(newPosition.getX());
-        sectionPositionList.get(sectionIndex).setY(newPosition.getY());
     }
 }

@@ -77,45 +77,40 @@ public class TestDay3 {
     @DisplayName("It should return the given item's priority - line 1")
     public void getItemPriority_line1() {
         Item item = fromName('p');
-        Integer expectedPriority = 16;
 
-        assertEquals(expectedPriority, item.getPriority());
+        assertEquals(16, item.getPriority());
     }
 
     @Test
     @DisplayName("It should return the given item's priority - line 2")
     public void getItemPriority_line2() {
         Item item = fromName('L');
-        Integer expectedPriority = 38;
 
-        assertEquals(expectedPriority, item.getPriority());
+        assertEquals(38, item.getPriority());
     }
 
     @Test
     @DisplayName("It should return the given item's priority - line 3")
     public void getItemPriority_line3() {
         Item item = fromName('P');
-        Integer expectedPriority = 42;
 
-        assertEquals(expectedPriority, item.getPriority());
+        assertEquals(42, item.getPriority());
     }
 
     @Test
     @DisplayName("It should return the given item's priority - line 4")
     public void getItemPriority_line4() {
         Item item = fromName('v');
-        Integer expectedPriority = 22;
 
-        assertEquals(expectedPriority, item.getPriority());
+        assertEquals(22, item.getPriority());
     }
 
     @Test
     @DisplayName("It should return the given item's priority - line 5")
     public void getItemPriority_line5() {
         Item item = fromName('t');
-        Integer expectedPriority = 20;
 
-        assertEquals(expectedPriority, item.getPriority());
+        assertEquals(20, item.getPriority());
     }
 
     @Test

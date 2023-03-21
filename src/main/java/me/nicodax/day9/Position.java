@@ -21,9 +21,4 @@ public class Position {
         if (!(other instanceof Position otherPosition)) return false;
         return otherPosition.getX().equals(x) && otherPosition.getY().equals(y);
     }
-
-    @Override
-    public String toString() {
-        return "[x=" + x + ", y=" + y + "]";
-    }
 }

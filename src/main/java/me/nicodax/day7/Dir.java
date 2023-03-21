@@ -5,10 +5,10 @@ import java.util.HashMap;
 public class Dir {
     private final HashMap<String, Integer> files = new HashMap<>();
     private final HashMap<String, Dir> directories = new HashMap<>();
+    private Integer filesTotalSize = 0;
+    private Integer directoriesTotalSize = 0;
 
     public Integer getTotalSize() {
-        Integer filesTotalSize = 0;
-        Integer directoriesTotalSize = 0;
         if (!files.isEmpty()) filesTotalSize = files.values().stream().reduce(0, Integer::sum);
         if (!directories.isEmpty()) directoriesTotalSize = directories.values()
                                                                       .stream()

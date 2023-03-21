@@ -20,80 +20,86 @@ public class TestDay2 {
             + PATH_SEPARATOR + "main"
             + PATH_SEPARATOR + "resources"
             + PATH_SEPARATOR + "test-input-day2.txt");
+    private final Integer PART_1 = 1;
+    private final Integer PART_2 = 2;
 
     @Test
     @DisplayName("It should return the the score of an RPS round - part 1 round 1.")
     public void getRoundScore_part1Round1() {
-        Day2 day2 = new Day2(1);
-        Integer expectedScore = 8;
+        Day2 day2 = new Day2(PART_1);
+        day2.setMyAction(PAPER);
+        day2.setOpponentAction(ROCK);
 
-        assertEquals(expectedScore, day2.getRoundScore(PAPER, ROCK));
+        assertEquals(8, day2.getRoundScore());
     }
 
     @Test
     @DisplayName("It should return the the score of an RPS round - part 1 round 2.")
     public void getRoundScore_part1Round2() {
-        Day2 day2 = new Day2(1);
-        Integer expectedScore = 1;
+        Day2 day2 = new Day2(PART_1);
+        day2.setMyAction(ROCK);
+        day2.setOpponentAction(PAPER);
 
-        assertEquals(expectedScore, day2.getRoundScore(ROCK, PAPER));
+        assertEquals(1, day2.getRoundScore());
     }
 
     @Test
     @DisplayName("It should return the the score of an RPS round - part 1 round 3.")
     public void getRoundScore_part1Round3() {
-        Day2 day2 = new Day2(1);
-        Integer expectedScore = 6;
+        Day2 day2 = new Day2(PART_1);
+        day2.setMyAction(SCISSORS);
+        day2.setOpponentAction(SCISSORS);
 
-        assertEquals(expectedScore, day2.getRoundScore(SCISSORS, SCISSORS));
+        assertEquals(6, day2.getRoundScore());
     }
 
     @Test
     @DisplayName("It should return the the total score of an RPS game - part 1")
     public void getTotalScore_part1() {
-        Day2 day2 = new Day2(1);
-        Integer expectedScore = 15;
+        Day2 day2 = new Day2(PART_1);
 
         day2.readAndParseFile(PATH_TO_TEST_INPUT);
 
-        assertEquals(expectedScore, day2.getTotalScore());
+        assertEquals(15, day2.getTotalScore());
     }
 
     @Test
     @DisplayName("It should return the the score of an RPS round - part 2 round 1.")
     public void getRoundScore_part2Round1() {
-        Day2 day2 = new Day2(2);
-        Integer expectedScore = 4;
+        Day2 day2 = new Day2(PART_2);
+        day2.setMyAction(ROCK);
+        day2.setOpponentAction(ROCK);
 
-        assertEquals(expectedScore, day2.getRoundScore(ROCK, ROCK));
+        assertEquals(4, day2.getRoundScore());
     }
 
     @Test
     @DisplayName("It should return the the score of an RPS round - part 2 round 2.")
     public void getRoundScore_part2Round2() {
-        Day2 day2 = new Day2(2);
-        Integer expectedScore = 1;
+        Day2 day2 = new Day2(PART_2);
+        day2.setMyAction(ROCK);
+        day2.setOpponentAction(PAPER);
 
-        assertEquals(expectedScore, day2.getRoundScore(ROCK, PAPER));
+        assertEquals(1, day2.getRoundScore());
     }
 
     @Test
     @DisplayName("It should return the the score of an RPS round - part 2 round 3.")
     public void getRoundScore_part2Round3() {
-        Day2 day2 = new Day2(2);
-        Integer expectedScore = 7;
+        Day2 day2 = new Day2(PART_2);
+        day2.setMyAction(ROCK);
+        day2.setOpponentAction(SCISSORS);
 
-        assertEquals(expectedScore, day2.getRoundScore(ROCK, SCISSORS));
+        assertEquals(7, day2.getRoundScore());
     }
 
     @Test
     @DisplayName("It should return the the total score of an RPS game - part 2")
     public void getTotalScore_part2() {
-        Day2 day2 = new Day2(2);
-        Integer expectedScore = 12;
+        Day2 day2 = new Day2(PART_2);
 
         day2.readAndParseFile(PATH_TO_TEST_INPUT);
 
-        assertEquals(expectedScore, day2.getTotalScore());
+        assertEquals(12, day2.getTotalScore());
     }
 }

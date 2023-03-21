@@ -3,10 +3,7 @@ package me.nicodax.day6;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Stream;
 
 import static java.util.Collections.frequency;
@@ -16,7 +13,7 @@ public class Day6 {
     private Integer firstMarkerIndex = -1;
 
     public Day6(Integer markerSize) {
-        this.MARKER_SIZE = markerSize;
+        MARKER_SIZE = markerSize;
     }
 
     public void readAndParseFile(Path path) {

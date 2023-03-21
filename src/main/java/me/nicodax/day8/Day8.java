@@ -1,8 +1,6 @@
 package me.nicodax.day8;
 
-import com.google.common.annotations.VisibleForTesting;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -27,11 +25,9 @@ public class Day8 {
                 String line = lines.get(i);
                 if (line.isBlank()) continue;
                 List<Tree> treeLine = new ArrayList<>();
-                for (int j = 0; j < line.length(); j++) {
-                    treeLine.add(new Tree(j, i, intValue(line.charAt(j))));
-                }
+                for (int j = 0; j < line.length(); j++) treeLine.add(new Tree(j, i, intValue(line.charAt(j))));
                 treeLines.add(treeLine);
-                treeLines.forEach(tl -> allTrees.addAll(tl));
+                treeLines.forEach(allTrees::addAll);
             }
             for (int i = 0; i < lines.get(0).length(); i++) {
                 List<Tree> treeColumn = new ArrayList<>();

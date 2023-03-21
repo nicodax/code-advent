@@ -20,10 +20,10 @@ import static java.util.Collections.max;
 @Setter
 public class Day1 {
     private final List<Integer> totalCaloriesPerElfList = new ArrayList<>(Collections.singletonList(0));
+    private Integer currentElfIndex = 0;
 
     public void readAndParseFile(Path path) {
         try (Stream<String> lines = Files.lines(path)) {
-            int currentElfIndex = 0;
             for (String line : lines.toList()) {
                 if (line.isBlank()) { // elf inventory separator
                     currentElfIndex++;
@@ -31,7 +31,7 @@ public class Day1 {
                 }
                 if (currentElfIndex >= totalCaloriesPerElfList.size()) totalCaloriesPerElfList.add(0); // initialize empty
                 // increment total inventory size for current elf:
-                addCalorieToCurrentTotalFor(currentElfIndex, parseInt(line));
+                addCalorieToCurrentTotalFor(parseInt(line));
             }
         }
         catch (IOException e) {
@@ -39,10 +39,8 @@ public class Day1 {
         }
     }
 
-    private void addCalorieToCurrentTotalFor(Integer currentElfIndex, Integer caloriesToAdd) {
-        Integer totalCaloriesForCurrentElf = totalCaloriesPerElfList.get(currentElfIndex);
-        totalCaloriesForCurrentElf += caloriesToAdd;
-        totalCaloriesPerElfList.set(currentElfIndex, totalCaloriesForCurrentElf);
+    private void addCalorieToCurrentTotalFor(Integer caloriesToAdd) {
+        totalCaloriesPerElfList.set(currentElfIndex, totalCaloriesPerElfList.get(currentElfIndex) + caloriesToAdd);
     }
 
     public Integer getPart1Solution() {
