@@ -1,6 +1,8 @@
 package me.nicodax.day9;
 
 import com.google.common.annotations.VisibleForTesting;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.Value;
 
 import java.util.ArrayList;
@@ -10,9 +12,12 @@ import java.util.stream.Collectors;
 import static java.util.Arrays.asList;
 import static me.nicodax.day9.MovementType.NONE;
 
-@Value
 public class Rope {
+    @Setter
+    @Getter
     List<Position> sectionPositionList = new ArrayList<>();
+    @Setter
+    @Getter
     List<Position> tailPositionList = new ArrayList<>();
     Integer ropeLength;
     Integer HEAD_INDEX = 0;

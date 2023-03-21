@@ -14,4 +14,16 @@ public class Position {
     public static Position copyOf(Position position) {
         return new Position(position.getX(), position.getY());
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) return true;
+        if (!(other instanceof Position otherPosition)) return false;
+        return otherPosition.getX().equals(x) && otherPosition.getY().equals(y);
+    }
+
+    @Override
+    public String toString() {
+        return "[x=" + x + ", y=" + y + "]";
+    }
 }
