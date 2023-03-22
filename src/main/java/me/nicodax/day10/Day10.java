@@ -12,6 +12,7 @@ import static java.util.Arrays.asList;
 
 public class Day10 {
     private final List<Integer> xRegisterValueList = new ArrayList<>();
+    private final Integer SCREEN_LINE_WIDTH = 40;
 
     public void readAndParseFile(Path path) {
         Integer FIRST_X_VALUE = 1;
@@ -46,7 +47,6 @@ public class Day10 {
     }
 
     public Integer getSignalStrengthDuringCycle(Integer cycleNumber) {
-        // TO DO
         return cycleNumber * getXRegisterValueDuringCycle(cycleNumber);
     }
 
@@ -59,5 +59,33 @@ public class Day10 {
 
     public Integer getPart1Solution() {
         return findMaxCycleNumber(0, 0);
+    }
+
+    public List<String> getPart2Solution() {
+        List<String> lines = new ArrayList<>();
+        for (int lineIndex = 0; lineIndex < (getTotalNumberOfCycle() / SCREEN_LINE_WIDTH); lineIndex++) {
+            lines.add(drawScreenLine(lineIndex));
+        }
+        return lines;
+    }
+
+    private Integer getTotalNumberOfCycle() {
+        return xRegisterValueList.size() - 1;
+    }
+
+    private String drawScreenLine(Integer lineIndex) {
+        String LIT_PIXEL = "#";
+        String DARK_PIXEL = ".";
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < SCREEN_LINE_WIDTH; i++) {
+            Integer cycleNumber = lineIndex * SCREEN_LINE_WIDTH + i + 1;
+            stringBuilder.append(isDrawingSpritePixel(i, cycleNumber) ? LIT_PIXEL : DARK_PIXEL);
+        }
+        return stringBuilder.toString();
+    }
+
+    private Boolean isDrawingSpritePixel(Integer screenIndex, Integer cycleNumber) {
+        Integer centerSpritePixel = getXRegisterValueDuringCycle(cycleNumber);
+        return screenIndex >= centerSpritePixel - 1 && screenIndex <= centerSpritePixel + 1;
     }
 }
