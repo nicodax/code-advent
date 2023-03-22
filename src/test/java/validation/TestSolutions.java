@@ -1,6 +1,7 @@
 package validation;
 
 import me.nicodax.day1.Day1;
+import me.nicodax.day10.Day10;
 import me.nicodax.day2.Day2;
 import me.nicodax.day3.Day3;
 import me.nicodax.day4.Day4;
@@ -29,6 +30,7 @@ public class TestSolutions {
     private final Path PATH_TO_DAY_7_INPUT = getPathToInput(7);
     private final Path PATH_TO_DAY_8_INPUT = getPathToInput(8);
     private final Path PATH_TO_DAY_9_INPUT = getPathToInput(9);
+    private final Path PATH_TO_DAY_10_INPUT = getPathToInput(10);
 
     private Path getPathToInput(Integer dayNumber) {
         return Paths.get(System.getProperty("user.dir")
@@ -180,5 +182,13 @@ public class TestSolutions {
         Day9 day9 = new Day9(10);
         day9.readAndParseFile(PATH_TO_DAY_9_INPUT);
         assertEquals(2691, day9.getSolution());
+    }
+
+    @Test
+    @DisplayName("What is the sum of these six signal strengths?")
+    public void day10Part1Solution() {
+        Day10 day10 = new Day10();
+        day10.readAndParseFile(PATH_TO_DAY_10_INPUT);
+        assertEquals(14780, day10.getPart1Solution());
     }
 }

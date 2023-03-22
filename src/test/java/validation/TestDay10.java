@@ -55,16 +55,16 @@ public class TestDay10 {
 
     @Test
     @DisplayName("Should return the signal strength after given cycle")
-    public void getSignalStrengthAfterGivenCycle() {
+    public void getSignalStrengthDuringGivenCycle() {
         Day10 day10 = new Day10();
         day10.readAndParseFile(PATH_TO_TEST_INPUT_2);
 
-        assertEquals(420, day10.getSignalStrengthAfterCycle(20));
-        assertEquals(1140, day10.getSignalStrengthAfterCycle(60));
-        assertEquals(1800, day10.getSignalStrengthAfterCycle(100));
-        assertEquals(2940, day10.getSignalStrengthAfterCycle(140));
-        assertEquals(2880, day10.getSignalStrengthAfterCycle(180));
-        assertEquals(3960, day10.getSignalStrengthAfterCycle(220));
+        assertEquals(420, day10.getSignalStrengthDuringCycle(20));
+        assertEquals(1140, day10.getSignalStrengthDuringCycle(60));
+        assertEquals(1800, day10.getSignalStrengthDuringCycle(100));
+        assertEquals(2940, day10.getSignalStrengthDuringCycle(140));
+        assertEquals(2880, day10.getSignalStrengthDuringCycle(180));
+        assertEquals(3960, day10.getSignalStrengthDuringCycle(220));
     }
 
     @Test
