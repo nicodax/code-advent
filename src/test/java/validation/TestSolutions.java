@@ -2,6 +2,7 @@ package validation;
 
 import me.nicodax.day1.Day1;
 import me.nicodax.day10.Day10;
+import me.nicodax.day11.Day11;
 import me.nicodax.day2.Day2;
 import me.nicodax.day3.Day3;
 import me.nicodax.day4.Day4;
@@ -33,6 +34,7 @@ public class TestSolutions {
     private final Path PATH_TO_DAY_8_INPUT = getPathToInput(8);
     private final Path PATH_TO_DAY_9_INPUT = getPathToInput(9);
     private final Path PATH_TO_DAY_10_INPUT = getPathToInput(10);
+    private final Path PATH_TO_DAY_11_INPUT = getPathToInput(11);
 
     private Path getPathToInput(Integer dayNumber) {
         return Paths.get(System.getProperty("user.dir")
@@ -208,5 +210,13 @@ public class TestSolutions {
         for (String line : lines) {
             System.out.println(line);
         }
+    }
+
+    @Test
+    @DisplayName("What is the level of monkey business after 20 rounds of stuff-slinging simian shenanigans?")
+    public void day11Part1Solution() {
+        Day11 day11 = new Day11();
+        day11.readAndParseFile(PATH_TO_DAY_11_INPUT);
+        assertEquals(64032, day11.getPart1Solution());
     }
 }
