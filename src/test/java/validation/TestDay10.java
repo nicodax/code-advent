@@ -12,8 +12,6 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static java.lang.Integer.valueOf;
-import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
