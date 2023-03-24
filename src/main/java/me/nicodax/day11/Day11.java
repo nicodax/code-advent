@@ -17,8 +17,13 @@ import static me.nicodax.day11.Monkey.OPERATION_NUMBER_IS_ITSELF_MARKER;
 import static me.nicodax.day11.OperationTypes.of;
 
 public class Day11 {
+    private final Integer RELIEF_DIVIDER;
     @Getter
     private final List<Monkey> monkeyList = new ArrayList<>();
+
+    public Day11(Integer reliefDivider) {
+        RELIEF_DIVIDER = reliefDivider;
+    }
 
     public void readAndParseFile(Path path) {
         String STARTING_ITEMS_MARKER = "Starting items: ";
@@ -29,7 +34,7 @@ public class Day11 {
         String TRUE_TEST_MARKER = "If true: throw to monkey ";
         String FALSE_TEST_MARKER = "If false: throw to monkey ";
         try (Stream<String> lines = Files.lines(path)) {
-            List<Integer> currentMonkeyStartingItems = new ArrayList<>();
+            List<Long> currentMonkeyStartingItems = new ArrayList<>();
             OperationTypes currentMonkeyOperation = null;
             int currentMonkeyOperationNumber = 0;
             int currentMonkeyConditionDivider = 0;
@@ -40,7 +45,7 @@ public class Day11 {
                     currentMonkeyStartingItems = stream(line.trim()
                             .replace(STARTING_ITEMS_MARKER, "")
                             .split(", "))
-                            .map(Integer::valueOf)
+                            .map(Long::valueOf)
                             .toList();
                 else if (line.contains(OPERATION_MARKER)) {
                     List<String> operationArgs = stream(line.trim()
@@ -62,7 +67,9 @@ public class Day11 {
                             currentMonkeyOperationNumber,
                             currentMonkeyConditionDivider,
                             currentMonkeyTrueTestMonkeyTarget,
-                            currentMonkeyFalseTestMonkeyTarget));
+                            currentMonkeyFalseTestMonkeyTarget,
+                            RELIEF_DIVIDER
+                            ));
                 }
             }
             monkeyList.add(new Monkey(currentMonkeyStartingItems,
@@ -70,7 +77,8 @@ public class Day11 {
                     currentMonkeyOperationNumber,
                     currentMonkeyConditionDivider,
                     currentMonkeyTrueTestMonkeyTarget,
-                    currentMonkeyFalseTestMonkeyTarget));
+                    currentMonkeyFalseTestMonkeyTarget,
+                    RELIEF_DIVIDER));
         } catch (IOException e) {
             System.out.println(e);
         }
@@ -79,12 +87,12 @@ public class Day11 {
     public void processRounds(Integer numberOfRoundsToProcess) {
         for (int round = 0; round < numberOfRoundsToProcess; round++) {
             for (Monkey monkey : monkeyList) {
-                List<Integer> preRoundItemWorryLevelList = new ArrayList<>(monkey.getItemWorryLevelList());
+                List<Long> preRoundItemWorryLevelList = new ArrayList<>(monkey.getItemWorryLevelList());
                 for (int item = 0; item < preRoundItemWorryLevelList.size(); item++) {
                     monkey.inspectItem();
                     monkey.applyReliefTo();
                     Monkey targetMonkey = monkeyList.get(monkey.throwItemTo());
-                    Integer thrownItemWorryLevel = monkey.throwItem();
+                    Long thrownItemWorryLevel = monkey.throwItem();
                     targetMonkey.catchItem(thrownItemWorryLevel);
                 }
             }

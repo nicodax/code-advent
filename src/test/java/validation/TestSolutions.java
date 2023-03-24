@@ -215,7 +215,8 @@ public class TestSolutions {
     @Test
     @DisplayName("What is the level of monkey business after 20 rounds of stuff-slinging simian shenanigans?")
     public void day11Part1Solution() {
-        Day11 day11 = new Day11();
+        Integer RELIEF_DIVIDER_PART_1 = 3;
+        Day11 day11 = new Day11(RELIEF_DIVIDER_PART_1);
         day11.readAndParseFile(PATH_TO_DAY_11_INPUT);
         assertEquals(64032, day11.getPart1Solution());
     }

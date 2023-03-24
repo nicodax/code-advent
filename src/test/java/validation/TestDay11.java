@@ -26,11 +26,12 @@ public class TestDay11 {
             + PATH_SEPARATOR + "main"
             + PATH_SEPARATOR + "resources"
             + PATH_SEPARATOR + "test-input-day11.txt");
+    private final Integer RELIEF_DIVIDER_PART_1 = 3;
 
     @Test
     @DisplayName("Should read and parse test input, and create initial monkey inventories")
     public void readAndParseFile_initialMonkeyInventories() {
-        Day11 day11 = new Day11();
+        Day11 day11 = new Day11(RELIEF_DIVIDER_PART_1);
         day11.readAndParseFile(PATH_TO_TEST_INPUT);
         List<Monkey> monkeyList = day11.getMonkeyList();
 
@@ -40,16 +41,16 @@ public class TestDay11 {
         Monkey monkey2 = monkeyList.get(2);
         Monkey monkey3 = monkeyList.get(3);
 
-        assertEquals(asList(79, 98), monkey0.getItemWorryLevelList());
-        assertEquals(asList(54, 65, 75, 74), monkey1.getItemWorryLevelList());
-        assertEquals(asList(79, 60, 97), monkey2.getItemWorryLevelList());
-        assertEquals(of(74), monkey3.getItemWorryLevelList());
+        assertEquals(asList(79L, 98L), monkey0.getItemWorryLevelList());
+        assertEquals(asList(54L, 65L, 75L, 74L), monkey1.getItemWorryLevelList());
+        assertEquals(asList(79L, 60L, 97L), monkey2.getItemWorryLevelList());
+        assertEquals(of(74L), monkey3.getItemWorryLevelList());
     }
 
     @Test
     @DisplayName("Should read and parse test input, and set monkey operation")
     public void readAndParseFile_setMonkeyOperation() {
-        Day11 day11 = new Day11();
+        Day11 day11 = new Day11(RELIEF_DIVIDER_PART_1);
         day11.readAndParseFile(PATH_TO_TEST_INPUT);
         List<Monkey> monkeyList = day11.getMonkeyList();
 
@@ -73,7 +74,7 @@ public class TestDay11 {
     @Test
     @DisplayName("Should read and parse test input, and set monkey test condition")
     public void readAndParseFile_setMonkeyTestCondition() {
-        Day11 day11 = new Day11();
+        Day11 day11 = new Day11(RELIEF_DIVIDER_PART_1);
         day11.readAndParseFile(PATH_TO_TEST_INPUT);
         List<Monkey> monkeyList = day11.getMonkeyList();
 
@@ -98,18 +99,18 @@ public class TestDay11 {
         assertEquals(1, monkey3.getFalseTestMonkeyTarget());
     }
 
-    private List<Monkey> setupInitialMonkeyList() {
-        Monkey monkey0 = new Monkey(asList(79, 98), MULTIPLY, 19, 23, 2, 3);
-        Monkey monkey1 = new Monkey(asList(54, 65, 75, 74), ADD, 6, 19, 2, 0);
-        Monkey monkey2 = new Monkey(asList(79, 60, 97), MULTIPLY, OPERATION_NUMBER_IS_ITSELF_MARKER, 13, 1, 3);
-        Monkey monkey3 = new Monkey(of(74), ADD, 3, 17, 0, 1);
+    private List<Monkey> setupInitialMonkeyList(Integer reliefDivider) {
+        Monkey monkey0 = new Monkey(asList(79L, 98L), MULTIPLY, 19, 23, 2, 3, reliefDivider);
+        Monkey monkey1 = new Monkey(asList(54L, 65L, 75L, 74L), ADD, 6, 19, 2, 0, reliefDivider);
+        Monkey monkey2 = new Monkey(asList(79L, 60L, 97L), MULTIPLY, OPERATION_NUMBER_IS_ITSELF_MARKER, 13, 1, 3, reliefDivider);
+        Monkey monkey3 = new Monkey(of(74L), ADD, 3, 17, 0, 1, reliefDivider);
         return asList(monkey0, monkey1, monkey2, monkey3);
     }
 
     @Test
     @DisplayName("Should apply operation on given item worry level")
     public void applyOperationOnItemWorryLevel() {
-        List<Monkey> initialMonkeyList = setupInitialMonkeyList();
+        List<Monkey> initialMonkeyList = setupInitialMonkeyList(RELIEF_DIVIDER_PART_1);
         Monkey monkey0 = initialMonkeyList.get(0);
         Monkey monkey1 = initialMonkeyList.get(1);
         Monkey monkey2 = initialMonkeyList.get(2);
@@ -135,15 +136,15 @@ public class TestDay11 {
     @Test
     @DisplayName("Should divide given worry level by 3 and round it down to the nearest integer")
     public void applyReliefTo() {
-        List<Monkey> initialMonkeyList = setupInitialMonkeyList();
+        List<Monkey> initialMonkeyList = setupInitialMonkeyList(RELIEF_DIVIDER_PART_1);
         Monkey monkey0 = initialMonkeyList.get(0);
-        monkey0.setWorryLevelListFor(0, 1501);
+        monkey0.setWorryLevelListFor(0, 1501L);
         Monkey monkey1 = initialMonkeyList.get(1);
-        monkey1.setWorryLevelListFor(0, 60);
+        monkey1.setWorryLevelListFor(0, 60L);
         Monkey monkey2 = initialMonkeyList.get(2);
-        monkey2.setWorryLevelListFor(0, 6241);
+        monkey2.setWorryLevelListFor(0, 6241L);
         Monkey monkey3 = initialMonkeyList.get(3);
-        monkey3.setWorryLevelListFor(0, 77);
+        monkey3.setWorryLevelListFor(0, 77L);
 
         monkey0.applyReliefTo();
         assertEquals(500, monkey0.getItemWorryLevelList().get(0));
@@ -161,15 +162,15 @@ public class TestDay11 {
     @Test
     @DisplayName("Should test first item on given monkey's test conditions")
     public void testItem() {
-        List<Monkey> initialMonkeyList = setupInitialMonkeyList();
+        List<Monkey> initialMonkeyList = setupInitialMonkeyList(RELIEF_DIVIDER_PART_1);
         Monkey monkey0 = initialMonkeyList.get(0);
-        monkey0.setWorryLevelListFor(0, 500);
+        monkey0.setWorryLevelListFor(0, 500L);
         Monkey monkey1 = initialMonkeyList.get(1);
-        monkey1.setWorryLevelListFor(0, 20);
+        monkey1.setWorryLevelListFor(0, 20L);
         Monkey monkey2 = initialMonkeyList.get(2);
-        monkey2.setWorryLevelListFor(0, 2080);
+        monkey2.setWorryLevelListFor(0, 2080L);
         Monkey monkey3 = initialMonkeyList.get(3);
-        monkey3.setWorryLevelListFor(0, 25);
+        monkey3.setWorryLevelListFor(0, 25L);
 
         monkey0.getsBored();
         assertFalse(monkey0.testItem());
@@ -187,7 +188,7 @@ public class TestDay11 {
     @Test
     @DisplayName("Should process the first round")
     public void processFirstRound() {
-        Day11 day11 = new Day11();
+        Day11 day11 = new Day11(RELIEF_DIVIDER_PART_1);
         day11.readAndParseFile(PATH_TO_TEST_INPUT);
         List<Monkey> initialMonkeyList = new ArrayList<>(day11.getMonkeyList());
         for (Monkey monkey : day11.getMonkeyList()) {
@@ -199,8 +200,8 @@ public class TestDay11 {
 
         assertNotEquals(initialMonkeyList, monkeyList);
 
-        assertEquals(asList(20, 23, 27, 26), monkeyList.get(0).getItemWorryLevelList());
-        assertEquals(asList(2080, 25, 167, 207, 401, 1046), monkeyList.get(1).getItemWorryLevelList());
+        assertEquals(asList(20L, 23L, 27L, 26L), monkeyList.get(0).getItemWorryLevelList());
+        assertEquals(asList(2080L, 25L, 167L, 207L, 401L, 1046L), monkeyList.get(1).getItemWorryLevelList());
         assertEquals(emptyList(), monkeyList.get(2).getItemWorryLevelList());
         assertEquals(emptyList(), monkeyList.get(3).getItemWorryLevelList());
     }
@@ -208,7 +209,7 @@ public class TestDay11 {
     @Test
     @DisplayName("Should process the first five rounds")
     public void processFirstFiveRounds() {
-        Day11 day11 = new Day11();
+        Day11 day11 = new Day11(RELIEF_DIVIDER_PART_1);
         day11.readAndParseFile(PATH_TO_TEST_INPUT);
         List<Monkey> initialMonkeyList = new ArrayList<>(day11.getMonkeyList());
         for (Monkey monkey : day11.getMonkeyList()) {
@@ -220,8 +221,8 @@ public class TestDay11 {
 
         assertNotEquals(initialMonkeyList, monkeyList);
 
-        assertEquals(asList(15, 17, 16, 88, 1037), monkeyList.get(0).getItemWorryLevelList());
-        assertEquals(asList(20, 110, 205, 524, 72), monkeyList.get(1).getItemWorryLevelList());
+        assertEquals(asList(15L, 17L, 16L, 88L, 1037L), monkeyList.get(0).getItemWorryLevelList());
+        assertEquals(asList(20L, 110L, 205L, 524L, 72L), monkeyList.get(1).getItemWorryLevelList());
         assertEquals(emptyList(), monkeyList.get(2).getItemWorryLevelList());
         assertEquals(emptyList(), monkeyList.get(3).getItemWorryLevelList());
     }
@@ -229,7 +230,7 @@ public class TestDay11 {
     @Test
     @DisplayName("Should process the first ten rounds")
     public void processFirstTenRounds() {
-        Day11 day11 = new Day11();
+        Day11 day11 = new Day11(RELIEF_DIVIDER_PART_1);
         day11.readAndParseFile(PATH_TO_TEST_INPUT);
         List<Monkey> initialMonkeyList = new ArrayList<>(day11.getMonkeyList());
         for (Monkey monkey : day11.getMonkeyList()) {
@@ -241,8 +242,8 @@ public class TestDay11 {
 
         assertNotEquals(initialMonkeyList, monkeyList);
 
-        assertEquals(asList(91, 16, 20, 98), monkeyList.get(0).getItemWorryLevelList());
-        assertEquals(asList(481, 245, 22, 26, 1092, 30), monkeyList.get(1).getItemWorryLevelList());
+        assertEquals(asList(91L, 16L, 20L, 98L), monkeyList.get(0).getItemWorryLevelList());
+        assertEquals(asList(481L, 245L, 22L, 26L, 1092L, 30L), monkeyList.get(1).getItemWorryLevelList());
         assertEquals(emptyList(), monkeyList.get(2).getItemWorryLevelList());
         assertEquals(emptyList(), monkeyList.get(3).getItemWorryLevelList());
     }
@@ -250,7 +251,7 @@ public class TestDay11 {
     @Test
     @DisplayName("Should process the first fifteen rounds")
     public void processFirstFifteenRounds() {
-        Day11 day11 = new Day11();
+        Day11 day11 = new Day11(RELIEF_DIVIDER_PART_1);
         day11.readAndParseFile(PATH_TO_TEST_INPUT);
         List<Monkey> initialMonkeyList = new ArrayList<>(day11.getMonkeyList());
         for (Monkey monkey : day11.getMonkeyList()) {
@@ -262,8 +263,8 @@ public class TestDay11 {
 
         assertNotEquals(initialMonkeyList, monkeyList);
 
-        assertEquals(asList(83, 44, 8, 184, 9, 20, 26, 102), monkeyList.get(0).getItemWorryLevelList());
-        assertEquals(asList(110, 36), monkeyList.get(1).getItemWorryLevelList());
+        assertEquals(asList(83L, 44L, 8L, 184L, 9L, 20L, 26L, 102L), monkeyList.get(0).getItemWorryLevelList());
+        assertEquals(asList(110L, 36L), monkeyList.get(1).getItemWorryLevelList());
         assertEquals(emptyList(), monkeyList.get(2).getItemWorryLevelList());
         assertEquals(emptyList(), monkeyList.get(3).getItemWorryLevelList());
     }
@@ -271,7 +272,7 @@ public class TestDay11 {
     @Test
     @DisplayName("Should process the first twenty rounds")
     public void processFirstTwentyRounds() {
-        Day11 day11 = new Day11();
+        Day11 day11 = new Day11(RELIEF_DIVIDER_PART_1);
         day11.readAndParseFile(PATH_TO_TEST_INPUT);
         List<Monkey> initialMonkeyList = new ArrayList<>(day11.getMonkeyList());
         for (Monkey monkey : day11.getMonkeyList()) {
@@ -283,8 +284,8 @@ public class TestDay11 {
 
         assertNotEquals(initialMonkeyList, monkeyList);
 
-        assertEquals(asList(10, 12, 14, 26, 34), monkeyList.get(0).getItemWorryLevelList());
-        assertEquals(asList(245, 93, 53, 199, 115), monkeyList.get(1).getItemWorryLevelList());
+        assertEquals(asList(10L, 12L, 14L, 26L, 34L), monkeyList.get(0).getItemWorryLevelList());
+        assertEquals(asList(245L, 93L, 53L, 199L, 115L), monkeyList.get(1).getItemWorryLevelList());
         assertEquals(emptyList(), monkeyList.get(2).getItemWorryLevelList());
         assertEquals(emptyList(), monkeyList.get(3).getItemWorryLevelList());
     }
@@ -292,7 +293,7 @@ public class TestDay11 {
     @Test
     @DisplayName("Should return the total of inspected items for given monkey, after twenty rounds")
     public void getTotalInspectedItemsAfterTwentyRounds() {
-        Day11 day11 = new Day11();
+        Day11 day11 = new Day11(RELIEF_DIVIDER_PART_1);
         day11.readAndParseFile(PATH_TO_TEST_INPUT);
 
         day11.processRounds(20);
@@ -307,7 +308,7 @@ public class TestDay11 {
     @Test
     @DisplayName("Should return the level of monkey business after twenty rounds")
     public void getMonkeyBusinessLevelAfterTwentyRounds() {
-        Day11 day11 = new Day11();
+        Day11 day11 = new Day11(RELIEF_DIVIDER_PART_1);
         day11.readAndParseFile(PATH_TO_TEST_INPUT);
 
         assertEquals(10605, day11.getPart1Solution());

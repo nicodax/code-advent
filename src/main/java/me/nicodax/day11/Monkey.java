@@ -2,7 +2,6 @@ package me.nicodax.day11;
 
 import lombok.Getter;
 import lombok.Setter;
-import me.nicodax.day9.Position;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,39 +9,41 @@ import java.util.Objects;
 
 public class Monkey {
     public static final Integer OPERATION_NUMBER_IS_ITSELF_MARKER = -99;
-    private final Integer RELIEF_DIVIDER = 3;
+    private final Integer RELIEF_DIVIDER;
     @Getter
     @Setter
-    private List<Integer> itemWorryLevelList = new ArrayList<>();
+    private List<Long> itemWorryLevelList = new ArrayList<>();
     @Getter
-    private OperationTypes operation;
-    private Integer operationNumber;
+    private final OperationTypes operation;
+    private final Integer operationNumber;
     @Getter
-    private Integer conditionDivider;
+    private final Integer conditionDivider;
     @Getter
-    private Integer trueTestMonkeyTarget;
+    private final Integer trueTestMonkeyTarget;
     @Getter
-    private Integer falseTestMonkeyTarget;
+    private final Integer falseTestMonkeyTarget;
     @Getter
     private Integer totalInspectedItems = 0;
 
-    public Monkey(List<Integer> itemWorryLevelList,
+    public Monkey(List<Long> itemWorryLevelList,
                   OperationTypes operation,
                   Integer operationNumber,
                   Integer conditionDivider,
                   Integer trueTestMonkeyTarget,
-                  Integer falseTestMonkeyTarget) {
+                  Integer falseTestMonkeyTarget,
+                  Integer reliefDivider) {
         this.itemWorryLevelList.addAll(itemWorryLevelList);
         this.operation = operation;
         this.operationNumber = operationNumber;
         this.conditionDivider = conditionDivider;
         this.trueTestMonkeyTarget = trueTestMonkeyTarget;
         this.falseTestMonkeyTarget = falseTestMonkeyTarget;
+        RELIEF_DIVIDER = reliefDivider;
     }
 
     public void inspectItem() {
         totalInspectedItems++;
-        Integer newItemWorryLevel = switch (operation) {
+        Long newItemWorryLevel = switch (operation) {
             case MULTIPLY -> itemWorryLevelList.get(0) * getOperationNumber();
             case DIVIDE -> itemWorryLevelList.get(0) / getOperationNumber();
             case ADD -> itemWorryLevelList.get(0) + getOperationNumber();
@@ -60,16 +61,16 @@ public class Monkey {
     }
 
     public void applyReliefTo() {
-        Integer newItemWorryLevel = itemWorryLevelList.get(0) / RELIEF_DIVIDER;
+        Long newItemWorryLevel = itemWorryLevelList.get(0) / RELIEF_DIVIDER;
         setWorryLevelListFor(0, newItemWorryLevel);
     }
 
-    public Integer getOperationNumber() {
+    public Long getOperationNumber() {
         return Objects.equals(operationNumber, OPERATION_NUMBER_IS_ITSELF_MARKER) ?
                 itemWorryLevelList.get(0) : operationNumber;
     }
 
-    public void setWorryLevelListFor(Integer itemIndex, Integer newItemWorryLevel) {
+    public void setWorryLevelListFor(Integer itemIndex, Long newItemWorryLevel) {
         itemWorryLevelList.set(itemIndex, newItemWorryLevel);
     }
 
@@ -77,11 +78,11 @@ public class Monkey {
         return testItem() ? trueTestMonkeyTarget : falseTestMonkeyTarget;
     }
 
-    public Integer throwItem() {
+    public Long throwItem() {
         return itemWorryLevelList.remove(0);
     }
 
-    public void catchItem(Integer worryLevel) {
+    public void catchItem(Long worryLevel) {
         itemWorryLevelList.add(worryLevel);
     }
 
@@ -103,7 +104,8 @@ public class Monkey {
                 operationNumber,
                 conditionDivider,
                 trueTestMonkeyTarget,
-                falseTestMonkeyTarget);
+                falseTestMonkeyTarget,
+                RELIEF_DIVIDER);
     }
 
 }
