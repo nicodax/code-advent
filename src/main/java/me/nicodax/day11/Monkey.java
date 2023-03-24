@@ -41,7 +41,7 @@ public class Monkey {
         RELIEF_DIVIDER = reliefDivider;
     }
 
-    public void inspectItem() {
+    public void inspectItem(Long superModulo) {
         totalInspectedItems++;
         Long newItemWorryLevel = switch (operation) {
             case MULTIPLY -> itemWorryLevelList.get(0) * getOperationNumber();
@@ -49,7 +49,10 @@ public class Monkey {
             case ADD -> itemWorryLevelList.get(0) + getOperationNumber();
             default -> itemWorryLevelList.get(0) - getOperationNumber();
         };
-        setWorryLevelListFor(0, newItemWorryLevel);
+        if (newItemWorryLevel < 0) {
+            System.out.println("HELLO");
+        }
+        setWorryLevelListFor(0, newItemWorryLevel % superModulo);
     }
 
     public void getsBored() {

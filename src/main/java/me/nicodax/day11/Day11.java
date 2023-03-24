@@ -19,6 +19,7 @@ import static me.nicodax.day11.OperationTypes.of;
 
 public class Day11 {
     private final Integer RELIEF_DIVIDER;
+    private Long SUPER_MODULO = Long.MAX_VALUE;
     @Getter
     private final List<Monkey> monkeyList = new ArrayList<>();
 
@@ -80,9 +81,35 @@ public class Day11 {
                     currentMonkeyTrueTestMonkeyTarget,
                     currentMonkeyFalseTestMonkeyTarget,
                     RELIEF_DIVIDER));
+            if (RELIEF_DIVIDER == 1) {
+                List<Long> conditionDividerList = monkeyList.stream()
+                        .map(Monkey::getConditionDivider)
+                        .map(Long::valueOf)
+                        .toList();
+                SUPER_MODULO = lcm(conditionDividerList);
+            }
         } catch (IOException e) {
             System.out.println(e);
         }
+    }
+
+    private Long gcd(long a, long b) {
+        while (b > 0) {
+            long temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+
+    private Long lcm(long a, long b) {
+        return a * (b / gcd(a, b));
+    }
+
+    private Long lcm(List<Long> input) {
+        long result = input.get(0);
+        for(int i = 1; i < input.size(); i++) result = lcm(result, input.get(i));
+        return result;
     }
 
     public void processRounds(Integer numberOfRoundsToProcess) {
@@ -90,7 +117,7 @@ public class Day11 {
             for (Monkey monkey : monkeyList) {
                 List<Long> preRoundItemWorryLevelList = new ArrayList<>(monkey.getItemWorryLevelList());
                 for (int item = 0; item < preRoundItemWorryLevelList.size(); item++) {
-                    monkey.inspectItem();
+                    monkey.inspectItem(SUPER_MODULO);
                     monkey.applyReliefTo();
                     Monkey targetMonkey = monkeyList.get(monkey.throwItemTo());
                     Long thrownItemWorryLevel = monkey.throwItem();
@@ -105,7 +132,6 @@ public class Day11 {
         List<Integer> totalInspectedItemsList =
                 monkeyList.stream().map(Monkey::getTotalInspectedItems).sorted().collect(Collectors.toList());
         reverse(totalInspectedItemsList);
-        System.out.println(monkeyList.get(0).getItemWorryLevelList());
         return valueOf(totalInspectedItemsList.get(0)) * valueOf(totalInspectedItemsList.get(1));
     }
 }

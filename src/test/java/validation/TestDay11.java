@@ -117,19 +117,19 @@ public class TestDay11 {
         Monkey monkey2 = initialMonkeyList.get(2);
         Monkey monkey3 = initialMonkeyList.get(3);
 
-        monkey0.inspectItem();
+        monkey0.inspectItem(Long.MAX_VALUE);
         assertTrue(monkey0.getItemWorryLevelList().size() > 0);
         assertEquals(1501, monkey0.getItemWorryLevelList().get(0));
 
-        monkey1.inspectItem();
+        monkey1.inspectItem(Long.MAX_VALUE);
         assertTrue(monkey1.getItemWorryLevelList().size() > 0);
         assertEquals(60, monkey1.getItemWorryLevelList().get(0));
 
-        monkey2.inspectItem();
+        monkey2.inspectItem(Long.MAX_VALUE);
         assertTrue(monkey2.getItemWorryLevelList().size() > 0);
         assertEquals(6241, monkey2.getItemWorryLevelList().get(0));
 
-        monkey3.inspectItem();
+        monkey3.inspectItem(Long.MAX_VALUE);
         assertTrue(monkey3.getItemWorryLevelList().size() > 0);
         assertEquals(77, monkey3.getItemWorryLevelList().get(0));
     }
