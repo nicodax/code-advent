@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.lang.Integer.parseInt;
+import static java.lang.Long.valueOf;
 import static java.util.Arrays.stream;
 import static java.util.Collections.reverse;
 import static me.nicodax.day11.Monkey.OPERATION_NUMBER_IS_ITSELF_MARKER;
@@ -99,11 +100,12 @@ public class Day11 {
         }
     }
 
-    public Integer getPart1Solution() {
-        processRounds(20);
+    public Long getSolution(Integer numberOfRoundsToProcess) {
+        processRounds(numberOfRoundsToProcess);
         List<Integer> totalInspectedItemsList =
                 monkeyList.stream().map(Monkey::getTotalInspectedItems).sorted().collect(Collectors.toList());
         reverse(totalInspectedItemsList);
-        return totalInspectedItemsList.get(0) * totalInspectedItemsList.get(1);
+        System.out.println(monkeyList.get(0).getItemWorryLevelList());
+        return valueOf(totalInspectedItemsList.get(0)) * valueOf(totalInspectedItemsList.get(1));
     }
 }

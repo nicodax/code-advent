@@ -27,6 +27,7 @@ public class TestDay11 {
             + PATH_SEPARATOR + "resources"
             + PATH_SEPARATOR + "test-input-day11.txt");
     private final Integer RELIEF_DIVIDER_PART_1 = 3;
+    private final Integer RELIEF_DIVIDER_PART_2 = 1;
 
     @Test
     @DisplayName("Should read and parse test input, and create initial monkey inventories")
@@ -291,8 +292,8 @@ public class TestDay11 {
     }
 
     @Test
-    @DisplayName("Should return the total of inspected items for given monkey, after twenty rounds")
-    public void getTotalInspectedItemsAfterTwentyRounds() {
+    @DisplayName("Should return the total of inspected items for given monkey, after twenty rounds - part 1")
+    public void getTotalInspectedItemsAfterTwentyRounds_part1() {
         Day11 day11 = new Day11(RELIEF_DIVIDER_PART_1);
         day11.readAndParseFile(PATH_TO_TEST_INPUT);
 
@@ -306,11 +307,95 @@ public class TestDay11 {
     }
 
     @Test
-    @DisplayName("Should return the level of monkey business after twenty rounds")
-    public void getMonkeyBusinessLevelAfterTwentyRounds() {
+    @DisplayName("Should return the level of monkey business after twenty rounds - part 1")
+    public void getMonkeyBusinessLevelAfterTwentyRounds_part1() {
         Day11 day11 = new Day11(RELIEF_DIVIDER_PART_1);
         day11.readAndParseFile(PATH_TO_TEST_INPUT);
 
-        assertEquals(10605, day11.getPart1Solution());
+        assertEquals(10605, day11.getSolution(20));
+    }
+
+    @Test
+    @DisplayName("Should return the total of inspected items for given monkey, after first round - part 2")
+    public void getTotalInspectedItemsAfterFirstRound_part2() {
+        Day11 day11 = new Day11(RELIEF_DIVIDER_PART_2);
+        day11.readAndParseFile(PATH_TO_TEST_INPUT);
+
+        day11.processRounds(1);
+        List<Monkey> monkeyList = day11.getMonkeyList();
+
+        assertEquals(2, monkeyList.get(0).getTotalInspectedItems());
+        assertEquals(4, monkeyList.get(1).getTotalInspectedItems());
+        assertEquals(3, monkeyList.get(2).getTotalInspectedItems());
+        assertEquals(6, monkeyList.get(3).getTotalInspectedItems());
+    }
+
+    @Test
+    @DisplayName("Should return the total of inspected items for given monkey, after twenty rounds - part 2")
+    public void getTotalInspectedItemsAfterTwentyRounds_part2() {
+        Day11 day11 = new Day11(RELIEF_DIVIDER_PART_2);
+        day11.readAndParseFile(PATH_TO_TEST_INPUT);
+
+        day11.processRounds(20);
+        List<Monkey> monkeyList = day11.getMonkeyList();
+
+        assertEquals(99, monkeyList.get(0).getTotalInspectedItems());
+        assertEquals(97, monkeyList.get(1).getTotalInspectedItems());
+        assertEquals(8, monkeyList.get(2).getTotalInspectedItems());
+        assertEquals(103, monkeyList.get(3).getTotalInspectedItems());
+    }
+
+    @Test
+    @DisplayName("Should return the total of inspected items for given monkey, after 1000 rounds - part 2")
+    public void getTotalInspectedItemsAfter1000Rounds_part2() {
+        Day11 day11 = new Day11(RELIEF_DIVIDER_PART_2);
+        day11.readAndParseFile(PATH_TO_TEST_INPUT);
+
+        day11.processRounds(1000);
+        List<Monkey> monkeyList = day11.getMonkeyList();
+
+        assertEquals(5204, monkeyList.get(0).getTotalInspectedItems());
+        assertEquals(4792, monkeyList.get(1).getTotalInspectedItems());
+        assertEquals(199, monkeyList.get(2).getTotalInspectedItems());
+        assertEquals(5192, monkeyList.get(3).getTotalInspectedItems());
+    }
+
+    @Test
+    @DisplayName("Should return the total of inspected items for given monkey, after 5000 rounds - part 2")
+    public void getTotalInspectedItemsAfter5000Rounds_part2() {
+        Day11 day11 = new Day11(RELIEF_DIVIDER_PART_2);
+        day11.readAndParseFile(PATH_TO_TEST_INPUT);
+
+        day11.processRounds(5000);
+        List<Monkey> monkeyList = day11.getMonkeyList();
+
+        assertEquals(26075, monkeyList.get(0).getTotalInspectedItems());
+        assertEquals(23921, monkeyList.get(1).getTotalInspectedItems());
+        assertEquals(974, monkeyList.get(2).getTotalInspectedItems());
+        assertEquals(26000, monkeyList.get(3).getTotalInspectedItems());
+    }
+
+    @Test
+    @DisplayName("Should return the total of inspected items for given monkey, after 10000 rounds - part 2")
+    public void getTotalInspectedItemsAfter10000Rounds_part2() {
+        Day11 day11 = new Day11(RELIEF_DIVIDER_PART_2);
+        day11.readAndParseFile(PATH_TO_TEST_INPUT);
+
+        day11.processRounds(10000);
+        List<Monkey> monkeyList = day11.getMonkeyList();
+
+        assertEquals(52166, monkeyList.get(0).getTotalInspectedItems());
+        assertEquals(47830, monkeyList.get(1).getTotalInspectedItems());
+        assertEquals(1938, monkeyList.get(2).getTotalInspectedItems());
+        assertEquals(52013, monkeyList.get(3).getTotalInspectedItems());
+    }
+
+    @Test
+    @DisplayName("Should return the level of monkey business after 10000 rounds - part 2")
+    public void getMonkeyBusinessLevelAfter10000Rounds_part2() {
+        Day11 day11 = new Day11(RELIEF_DIVIDER_PART_2);
+        day11.readAndParseFile(PATH_TO_TEST_INPUT);
+
+        assertEquals(2713310158L, day11.getSolution(10000));
     }
 }
