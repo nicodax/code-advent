@@ -3,6 +3,7 @@ package validation;
 import me.nicodax.day1.Day1;
 import me.nicodax.day10.Day10;
 import me.nicodax.day11.Day11;
+import me.nicodax.day12.Day12;
 import me.nicodax.day2.Day2;
 import me.nicodax.day3.Day3;
 import me.nicodax.day4.Day4;
@@ -35,6 +36,7 @@ public class TestSolutions {
     private final Path PATH_TO_DAY_9_INPUT = getPathToInput(9);
     private final Path PATH_TO_DAY_10_INPUT = getPathToInput(10);
     private final Path PATH_TO_DAY_11_INPUT = getPathToInput(11);
+    private final Path PATH_TO_DAY_12_INPUT = getPathToInput(12);
 
     private Path getPathToInput(Integer dayNumber) {
         return Paths.get(System.getProperty("user.dir")
@@ -230,5 +232,23 @@ public class TestSolutions {
         Day11 day11 = new Day11(RELIEF_DIVIDER_PART_2);
         day11.readAndParseFile(PATH_TO_DAY_11_INPUT);
         assertEquals(12729522272L, day11.getSolution(ROUNDS_TO_PROCESS_PART_1));
+    }
+
+    @Test
+    @DisplayName("What is the fewest steps required to move from your current position to the location that should " +
+            "get the best signal?")
+    public void day12Part1Solution() {
+        Day12 day12 = new Day12(PATH_TO_DAY_12_INPUT, true, 1);
+
+        assertEquals(472, day12.getPart1Solution());
+    }
+
+    @Test
+    @DisplayName("What is the fewest steps required to move starting from any square with elevation a to the location " +
+            "that should get the best signal?")
+    public void day12Part2Solution() {
+        Day12 day12 = new Day12(PATH_TO_DAY_12_INPUT, true, 2);
+
+        assertEquals(465, day12.getPart2Solution());
     }
 }
